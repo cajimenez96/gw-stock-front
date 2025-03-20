@@ -1,0 +1,12 @@
+{
+  "translate": "Idioma",
+  "language_changed": "El idioma se ha actualizado correctamente",
+  "login": {
+    "title": "Iniciar sesión",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "submit": "Iniciar sesión",
+    "register": "¿No tienes una cuenta?",
+    "register_link": "Regístrate"
+  }
+}

@@ -1,4 +1,4 @@
-import { Button, Flex } from 'antd';
+import { Button, Flex, Typography } from 'antd';
 import { FieldValues, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
@@ -6,8 +6,11 @@ import { useLoginMutation } from '../../redux/features/authApi';
 import { useAppDispatch } from '../../redux/hooks';
 import { loginUser } from '../../redux/services/authSlice';
 import decodeToken from '../../utils/decodeToken';
+import { useTranslation } from 'react-i18next';
 
 const LoginPage = () => {
+  const { t } = useTranslation();
+  const { Title } = Typography;
   const [userLogin] = useLoginMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -17,8 +20,8 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: 'user@gmail.com',
-      password: 'pass123',
+      email: '',
+      password: '',
     },
   });
 
@@ -42,7 +45,7 @@ const LoginPage = () => {
   // if (isLoading) <Loader />;
   // else
   return (
-    <Flex justify='center' align='center' style={{ height: '100vh' }}>
+    <Flex justify='center' align='center' vertical style={{ height: '100vh' }}>
       <Flex
         vertical
         style={{
@@ -52,19 +55,19 @@ const LoginPage = () => {
           borderRadius: '.6rem',
         }}
       >
-        <h1 style={{ marginBottom: '.7rem', textAlign: 'center', textTransform: 'uppercase' }}>
-          Login
-        </h1>
+        <Title level={2} style={{ marginBottom: '.7rem', textAlign: 'center', textTransform: 'uppercase' }}>
+          {t('login.title')}
+        </Title>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             type='text'
             {...register('email', { required: true })}
-            placeholder='Your Name*'
+            placeholder={t('login.email')}
             className={`input-field ${errors['email'] ? 'input-field-error' : ''}`}
           />
           <input
             type='password'
-            placeholder='Your Password*'
+            placeholder={t('login.password')}
             className={`input-field ${errors['password'] ? 'input-field-error' : ''}`}
             {...register('password', { required: true })}
           />
@@ -74,12 +77,12 @@ const LoginPage = () => {
               type='primary'
               style={{ textTransform: 'uppercase', fontWeight: 'bold' }}
             >
-              Login
+              {t('login.title')}
             </Button>
           </Flex>
         </form>
         <p style={{ marginTop: '1rem' }}>
-          Don't have any account? <Link to='/register'>Resister Here</Link>
+          {t('login.register')} <Link to='/register'>{t('login.register_link')}</Link>
         </p>
       </Flex>
     </Flex>

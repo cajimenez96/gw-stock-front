@@ -1,0 +1,12 @@
+{
+  "translate": "Language",
+  "language_changed": "The language has been updated successfully",
+  "login": {
+    "title": "Login",
+    "email": "E-mail",
+    "password": "Password",
+    "submit": "Login",
+    "register": "Don't have any account?",
+    "register_link": "Register here"
+  }
+}
