@@ -1,96 +1,124 @@
-import { Button, Flex } from 'antd';
-import { FieldValues, useForm } from 'react-hook-form';
+import { Button, Flex, Form, Grid, Input } from 'antd';
+import { Controller, FieldValues, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import toastMessage from '../../lib/toastMessage';
 import { useRegisterMutation } from '../../redux/features/authApi';
 import { useAppDispatch } from '../../redux/hooks';
-import { loginUser } from '../../redux/services/authSlice';
-import decodeToken from '../../utils/decodeToken';
 import { toast } from 'sonner';
+import Container from '../../components/Container/Container';
+import Title from 'antd/es/typography/Title';
+import { useTranslation } from 'react-i18next';
+import { loginValidationRules } from '../../utils/validations';
+import { useState } from 'react';
+import { useAuthService } from '../../services/authService';
 
 const RegisterPage = () => {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [userRegistration] = useRegisterMutation();
+  const { registerUserService } = useAuthService();
+  const { useBreakpoint } = Grid;
+  const screens = useBreakpoint();
   const {
+    control,
     handleSubmit,
-    register,
     formState: { errors },
   } = useForm();
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const width = screens.xl ? '30%' : screens.lg ? '50%' : screens.md ? '60%' : '90%';
 
   const onSubmit = async (data: FieldValues) => {
-    const toastId = toast.loading('Registering new account!');
-    try {
-      const res = await userRegistration(data).unwrap();
+    setLoading(true);
 
-      if (data.password !== data.confirmPassword) {
-        toastMessage({ icon: 'error', text: 'Password and confirm password must be same!' });
-        return;
-      }
-      if (res.statusCode === 201) {
-        const user = decodeToken(res.data.token);
-        dispatch(loginUser({ token: res.data.token, user }));
-        navigate('/');
-        toast.success(res.message, { id: toastId });
-      }
-    } catch (error: any) {
-      toastMessage({ icon: 'error', text: error.data.message });
+    if (data.password !== data.passwordRepeat) {
+      toast.error(t('register.error_password'), {style: {backgroundColor: 'var(--color-error)'}});
+      setLoading(false);
+      return;
+    }
+
+    try {
+      await registerUserService(data, dispatch);
+      toast.success('Successfully register!', {style: {backgroundColor: 'var(--color-success)'}});
+      navigate('/login');
+    } catch (error) {
+      toast.error(t('login.error'), {style: {backgroundColor: 'var(--color-error)'}});
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <Flex justify='center' align='center' style={{ height: '100vh' }}>
-      <Flex
-        vertical
-        style={{
-          width: '400px',
-          padding: '3rem',
-          border: '1px solid #164863',
-          borderRadius: '.6rem',
-        }}
-      >
-        <h1 style={{ marginBottom: '.7rem', textAlign: 'center', textTransform: 'uppercase' }}>
-          Register
-        </h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <input
-            type='text'
-            {...register('name', { required: true })}
-            placeholder='Your Name*'
-            className={`input-field ${errors['name'] ? 'input-field-error' : ''}`}
-          />
-          <input
-            type='text'
-            {...register('email', { required: true })}
-            placeholder='Your Email*'
-            className={`input-field ${errors['email'] ? 'input-field-error' : ''}`}
-          />
-          <input
-            type='password'
-            placeholder='Your Password*'
-            {...register('password', { required: true })}
-            className={`input-field ${errors['password'] ? 'input-field-error' : ''}`}
-          />
-          <input
-            type='password'
-            placeholder='Confirm Password*'
-            {...register('confirmPassword', { required: true })}
-            className={`input-field ${errors['confirmPassword'] ? 'input-field-error' : ''}`}
-          />
-          <Flex justify='center'>
-            <Button
-              htmlType='submit'
-              type='primary'
-              style={{ textTransform: 'uppercase', fontWeight: 'bold' }}
-            >
-              Register
+      <Container vertical style={{padding: 50, width: width}}>
+        <Title level={2}>
+          {t('register.title')}
+        </Title>
+
+        <Form layout='vertical' onFinish={handleSubmit(onSubmit)}>
+
+        <Form.Item
+            label={t('register.full_name')}
+            validateStatus={errors.email ? 'error' : ''}
+            help={errors.email ? errors.email.message : ''}
+          >
+            <Controller
+              name="name"
+              control={control}
+              rules={{ required: true }}
+              render={({ field }) => <Input {...field} placeholder={t('register.full_name')} />}
+            />
+          </Form.Item>
+
+          <Form.Item
+            label={t('register.email_label')}
+            validateStatus={errors.email ? 'error' : ''}
+            help={errors.email ? errors.email.message : ''}
+          >
+            <Controller
+              name="email"
+              control={control}
+              rules={loginValidationRules.email}
+              render={({ field }) => <Input {...field} placeholder={t('register.email')} />}
+            />
+          </Form.Item>
+
+          <Form.Item
+            label={t('register.password_label')}
+            validateStatus={errors.password ? 'error' : ''}
+            help={errors.password ? errors.password.message : ''}
+          >
+            <Controller
+              name="password"
+              control={control}
+              rules={loginValidationRules.password}
+              render={({ field }) => <Input.Password {...field} placeholder={t('register.password')} />}
+            />
+          </Form.Item>
+
+          <Form.Item
+            label={t('register.repeat_password_label')}
+            validateStatus={errors.password ? 'error' : ''}
+            help={errors.password ? errors.password.message : ''}
+          >
+            <Controller
+              name="passwordRepeat"
+              control={control}
+              rules={loginValidationRules.password}
+              render={({ field }) => <Input.Password {...field} placeholder={t('register.repeat_password')} />}
+            />
+          </Form.Item>
+
+          <Flex justify="center" style={{marginTop: '3rem'}}>
+            <Button htmlType="submit" type="primary" loading={loading} style={{ textTransform: 'uppercase', fontWeight: 'bold', width: '50%' }}>
+              {t('register.submit')}
             </Button>
           </Flex>
-        </form>
+
+        </Form>
         <p style={{ marginTop: '1rem' }}>
-          Already have an account? <Link to='/login'>Login Here</Link>
+          {t('register.already_account')} <Link to='/login'>{t('register.login_here')}</Link>
         </p>
-      </Flex>
+      </Container>
     </Flex>
   );
 };

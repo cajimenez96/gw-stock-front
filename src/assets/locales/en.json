@@ -14,5 +14,19 @@
     "email_validation2": "You must enter a valid email address",
     "password_validation1": "Password is required",
     "password_validation2": "Password must contain at least 6 characters"
+  },
+  "register": {
+    "title": "Get started",
+    "full_name": "Full name",
+    "email": "E-mail",
+    "email_label": "Your E-mail",
+    "password": "Password",
+    "password_label": "Your Password",
+    "repeat_password": "Repeat Password",
+    "repeat_password_label": "Repeat your Password",
+    "already_account": "Already have an account?",
+    "login_here": "Login here",
+    "submit": "Create account",
+    "error_password": "Passwords do not match"
   }
 }

@@ -14,5 +14,19 @@
     "email_validation2": "Debe ingresar un email válido",
     "password_validation1": "La contraseña es obligatoria",
     "password_validation2": "La contraseña debe contener al menos 6 caracteres"
+  },
+  "register": {
+    "title": "Registrate",
+    "full_name": "Nombre completo",
+    "email": "Correo electrónico",
+    "email_label": "Tú correo electrónico",
+    "password": "Contraseña",
+    "password_label": "Tú contraseña",
+    "repeat_password": "Repetir contraseña",
+    "repeat_password_label": "Repetir tu contraseña",
+    "already_account": "¿Ya tienes una cuenta?",
+    "login_here": "Iniciar sesión",
+    "submit": "Crear cuenta",
+    "error_password": "Las contraseñas no coinciden"
   }
 }
