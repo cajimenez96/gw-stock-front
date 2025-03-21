@@ -1,90 +1,98 @@
-import { Button, Flex, Typography } from 'antd';
-import { FieldValues, useForm } from 'react-hook-form';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'sonner';
-import { useLoginMutation } from '../../redux/features/authApi';
 import { useAppDispatch } from '../../redux/hooks';
-import { loginUser } from '../../redux/services/authSlice';
-import decodeToken from '../../utils/decodeToken';
 import { useTranslation } from 'react-i18next';
+import { Controller, FieldValues, useForm } from 'react-hook-form';
+import { Button, Flex, Form, Input, Typography, Grid } from 'antd';
+import Container from '../../components/Container/Container';
+import { toast } from 'sonner';
+import { useAuthService } from '../../services/authService';  
+import { loginValidationRules } from '../../utils/validations';
 
 const LoginPage = () => {
   const { t } = useTranslation();
   const { Title } = Typography;
-  const [userLogin] = useLoginMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { useBreakpoint } = Grid;
+  const screens = useBreakpoint();
+  const { loginUserService } = useAuthService();
   const {
+    control,
     handleSubmit,
-    register,
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: '',
-      password: '',
+      email: 'usertest@grow.com.ar',
+      password: 'usertest',
     },
   });
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const width = screens.lg ? '25%' : screens.md ? '60%' : '90%';
 
   const onSubmit = async (data: FieldValues) => {
-    const toastId = toast.loading('Logging...');
+    setLoading(true);
     try {
-      const res = await userLogin(data).unwrap();
-
-      if (res.statusCode === 200) {
-        const user = decodeToken(res.data.token);
-        dispatch(loginUser({ token: res.data.token, user }));
-        navigate('/');
-        toast.success('Successfully Login!', { id: toastId });
-      }
-    } catch (error: any) {
-      toast.error(error.data.message, { id: toastId });
-      // toastMessage({ icon: 'error', text: error.data.message });
+      await loginUserService(data, dispatch);
+      toast.success('Successfully Login!', {style: {backgroundColor: 'var(--color-success)'}});
+      navigate('/');
+    } catch (error) {
+      toast.error(t('login.error'), {style: {backgroundColor: 'var(--color-error)'}});
+    } finally {
+      setLoading(false);
     }
-  };
+  }
 
-  // if (isLoading) <Loader />;
-  // else
   return (
     <Flex justify='center' align='center' vertical style={{ height: '100vh' }}>
-      <Flex
+      <Container
         vertical
-        style={{
-          width: '400px',
-          padding: '3rem',
-          border: '1px solid #164863',
-          borderRadius: '.6rem',
-        }}
+        style={{padding: 50, width: width}}
       >
-        <Title level={2} style={{ marginBottom: '.7rem', textAlign: 'center', textTransform: 'uppercase' }}>
+        <Title level={2} style={{marginBottom: '2rem'}}>
           {t('login.title')}
         </Title>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <input
-            type='text'
-            {...register('email', { required: true })}
-            placeholder={t('login.email')}
-            className={`input-field ${errors['email'] ? 'input-field-error' : ''}`}
-          />
-          <input
-            type='password'
-            placeholder={t('login.password')}
-            className={`input-field ${errors['password'] ? 'input-field-error' : ''}`}
-            {...register('password', { required: true })}
-          />
-          <Flex justify='center'>
-            <Button
-              htmlType='submit'
-              type='primary'
-              style={{ textTransform: 'uppercase', fontWeight: 'bold' }}
-            >
-              {t('login.title')}
+        <Form layout='vertical' onFinish={handleSubmit(onSubmit)}>
+
+          <Form.Item
+            label={t('login.email')}
+            validateStatus={errors.email ? 'error' : ''}
+            help={errors.email ? errors.email.message : ''}
+          >
+            <Controller
+              name="email"
+              control={control}
+              rules={loginValidationRules.email}
+              render={({ field }) => <Input {...field} placeholder={t('login.email')} />}
+            />
+          </Form.Item>
+
+          <Form.Item
+            label={t('login.password')}
+            validateStatus={errors.password ? 'error' : ''}
+            help={errors.password ? errors.password.message : ''}
+          >
+            <Controller
+              name="password"
+              control={control}
+              rules={loginValidationRules.password}
+              render={({ field }) => <Input.Password {...field} placeholder={t('login.password')} />}
+            />
+          </Form.Item>
+
+          <Flex justify="center" style={{marginTop: '3rem'}}>
+            <Button htmlType="submit" type="primary" loading={loading} style={{ textTransform: 'uppercase', fontWeight: 'bold', width: '50%' }}>
+              {t('login.submit')}
             </Button>
           </Flex>
-        </form>
-        <p style={{ marginTop: '1rem' }}>
+
+        </Form>
+
+        <p style={{ marginTop: '2rem' }}>
           {t('login.register')} <Link to='/register'>{t('login.register_link')}</Link>
         </p>
-      </Flex>
+      </Container>
     </Flex>
   );
 };

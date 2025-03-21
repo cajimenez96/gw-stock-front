@@ -5,8 +5,14 @@
     "title": "Login",
     "email": "E-mail",
     "password": "Password",
-    "submit": "Login",
+    "required": "You must complete this field",
+    "submit": "Log In",
     "register": "Don't have any account?",
-    "register_link": "Register here"
+    "register_link": "Register here",
+    "error": "Verify your credentials",
+    "email_validation1": "Email is required",
+    "email_validation2": "You must enter a valid email address",
+    "password_validation1": "Password is required",
+    "password_validation2": "Password must contain at least 6 characters"
   }
 }
