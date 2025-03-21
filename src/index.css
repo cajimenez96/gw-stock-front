@@ -4,8 +4,10 @@
   box-sizing: border-box;
 
   /* Colors Constants */
-  --bg-white: rgb(255, 255, 255, 1);
-  --border: rgb(226, 232, 240, 1);
+  --bg-white: rgb(255, 255, 255);
+  --border: rgb(226, 232, 240);
+  --color-blue: rgb(38, 121, 243);
+  --color-blue-disabled: rgb(168, 201, 250);
 }
 
 body {
@@ -23,8 +25,8 @@ body {
   outline: none;
   padding: .5rem;
   border-radius: 6px;
-  border: 1px solid rgb(130, 130, 130);
-  margin-bottom: .5rem;
+  border: 1px solid var(--border);
+  margin-bottom: 1.5rem;
 }
 
 .input-field-error {
