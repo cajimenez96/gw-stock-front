@@ -31,17 +31,17 @@ const RegisterPage = () => {
     setLoading(true);
 
     if (data.password !== data.passwordRepeat) {
-      toast.error(t('register.error_password'), {style: {backgroundColor: 'var(--color-error)'}});
+      toast.error(t('register.error_password'), {style: {backgroundColor: 'var(--error-color)'}});
       setLoading(false);
       return;
     }
 
     try {
       await registerUserService(data, dispatch);
-      toast.success('Successfully register!', {style: {backgroundColor: 'var(--color-success)'}});
+      toast.success('Successfully register!', {style: {backgroundColor: 'var(--success-color)'}});
       navigate('/login');
     } catch (error) {
-      toast.error(t('login.error'), {style: {backgroundColor: 'var(--color-error)'}});
+      toast.error(t('login.error'), {style: {backgroundColor: 'var(--error-color)'}});
     } finally {
       setLoading(false);
     }

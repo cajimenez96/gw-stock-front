@@ -35,10 +35,10 @@ const LoginPage = () => {
     setLoading(true);
     try {
       await loginUserService(data, dispatch);
-      toast.success('Successfully Login!', {style: {backgroundColor: 'var(--color-success)'}});
+      toast.success('Successfully Login!', {style: {backgroundColor: 'var(--success-color)'}});
       navigate('/');
     } catch (error) {
-      toast.error(t('login.error'), {style: {backgroundColor: 'var(--color-error)'}});
+      toast.error(t('login.error'), {style: {backgroundColor: 'var(--error-color)'}});
     } finally {
       setLoading(false);
     }
