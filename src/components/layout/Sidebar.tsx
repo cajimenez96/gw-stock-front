@@ -1,17 +1,21 @@
 import {useState} from 'react';
 import {Outlet, useNavigate} from 'react-router-dom';
-import {Button, Layout, Menu} from 'antd';
-import {LogoutOutlined} from '@ant-design/icons';
-import {sidebarItems} from '../../constant/sidebarItems';
+import { Layout, Menu, Typography} from 'antd';
+import { MenuFoldOutlined, MenuUnfoldOutlined, PoweroffOutlined} from '@ant-design/icons';
 import {useAppDispatch} from '../../redux/hooks';
 import {logoutUser} from '../../redux/services/authSlice';
+import { useTranslation } from 'react-i18next';
+import { getSidebarItems } from '../../constant/sidebarItems';
+import CustomButton from '../Button/CustomButton';
 
 const {Content, Sider} = Layout;
+const { Title } = Typography;
 
 const Sidebar = () => {
-  const [showLogoutBtn, setShowLogoutBtn] = useState(true);
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [collapsed, setCollapsed] = useState<boolean>(false);
 
   const handleClick = () => {
     dispatch(logoutUser());
@@ -21,35 +25,41 @@ const Sidebar = () => {
   return (
     <Layout style={{height: '100vh'}}>
       <Sider
-        breakpoint='lg'
-        collapsedWidth='0'
-        onCollapse={(collapsed, type) => {
-          if (type === 'responsive') {
-            setShowLogoutBtn(!collapsed);
-          }
-          if (type === 'clickTrigger') {
-            setShowLogoutBtn(!collapsed);
-          }
-        }}
-        width='220px'
-        style={{
-          backgroundColor: '#164863',
-          position: 'relative',
-        }}
+        collapsed={collapsed}
+        onCollapse={(value) => setCollapsed(value)}
+        breakpoint="xl"
+        collapsedWidth="50"
+        width='300px'
+        style={{backgroundColor: 'var(--bg-white)'}}
       >
-        <div className='demo-logo-vertical'>
-          <h1 style={{color: '#fff', padding: '1rem', fontSize: '1.8rem', textAlign: 'center'}}>
-            WELCOME
-          </h1>
+        <div onClick={() => setCollapsed(!collapsed)} className='dashboard-logo'>
+          {collapsed ? (
+            <MenuUnfoldOutlined style={{color: 'rgb(34, 34, 34)', width: 40}} />
+          ) : (
+            <MenuFoldOutlined style={{color: 'rgb(34, 34, 34)', width: 40}}/>
+          )}
+          <Title
+            level={3}
+            style={{
+              color: 'var(--font-color)',
+              // margin: 'auto',
+              marginLeft: 10,
+              marginTop: 10,
+              display: collapsed ? 'none' : 'block',
+              animationDelay: '5s'
+            }}
+          >
+            {t('sidebar.title')}
+          </Title>
         </div>
         <Menu
-          theme='dark'
           mode='inline'
-          style={{backgroundColor: '#164863', fontWeight: '700'}}
+          style={{backgroundColor: 'var(--bg-white)', color: 'var(--font-color)', fontSize: 16, borderRadius: 0}}
           defaultSelectedKeys={['Dashboard']}
-          items={sidebarItems}
+          items={getSidebarItems(t)}
+          title={'hola'}
         />
-        {showLogoutBtn && (
+        {!collapsed && (
           <div
             style={{
               margin: 'auto',
@@ -61,20 +71,10 @@ const Sidebar = () => {
               justifyContent: 'center',
             }}
           >
-            <Button
-              type='primary'
-              style={{
-                width: '100%',
-                backgroundColor: 'cyan',
-                color: '#000',
-                fontWeight: 600,
-                textTransform: 'uppercase',
-              }}
-              onClick={handleClick}
-            >
-              <LogoutOutlined />
-              Logout
-            </Button>
+            <CustomButton style={{width: '100%'}} handleClick={handleClick}>
+              <PoweroffOutlined />
+              {t('sidebar.logout')}
+            </CustomButton>
           </div>
         )}
       </Sider>
