@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactNode } from 'react'
+import { CSSProperties, ReactNode } from 'react'
 import { Flex, FlexProps } from 'antd';
 
 interface ContainerProps extends FlexProps {
