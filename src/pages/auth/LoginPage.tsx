@@ -23,8 +23,8 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: 'usertest@grow.com.ar',
-      password: 'usertest',
+      email: '',
+      password: '',
     },
   });
   const [loading, setLoading] = useState<boolean>(false);
