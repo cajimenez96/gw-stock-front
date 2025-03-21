@@ -13,7 +13,7 @@ const App = () => {
             colorPrimary: 'rgb(38, 121, 243)',
             colorBgContainerDisabled: 'rgb(168, 201, 250)',
             colorTextDisabled: 'rgb(255, 255, 255)',
-            colorBorder: 'rgb(226, 232, 240)'
+            colorBorder: 'rgb(226, 232, 240)',
           },
         }}
       >

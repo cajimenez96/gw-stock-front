@@ -8,6 +8,8 @@
   --border: rgb(226, 232, 240);
   --color-blue: rgb(38, 121, 243);
   --color-blue-disabled: rgb(168, 201, 250);
+  --color-success: rgb(70, 201, 65);
+  --color-error: rgb(234, 62, 20);
 }
 
 body {
