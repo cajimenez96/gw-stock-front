@@ -28,5 +28,16 @@
     "login_here": "Iniciar sesión",
     "submit": "Crear cuenta",
     "error_password": "Las contraseñas no coinciden"
+  },
+  "sidebar": {
+    "title": "Bienvenidos",
+    "dashboard": "Panel principal",
+    "add_product": "Agregar productos",
+    "manage_products": "Productos",
+    "manage_sales": "Ventas",
+    "manage_seller": "Vendedores",
+    "manage_purchase": "Compras",
+    "profile": "Perfil",
+    "logout": "Cerrar sesión"
   }
 }

@@ -10,35 +10,36 @@ import {
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-export const sidebarItems = [
+
+export const getSidebarItems = (t: any) => [
   {
     key: 'Dashboard',
-    label: <NavLink to='/'>DASHBOARD</NavLink>,
+    label: <NavLink to='/'>{t('sidebar.dashboard')}</NavLink>,
     icon: React.createElement(ProfileFilled),
   },
   {
     key: 'Add Product',
-    label: <NavLink to='/create-product'>ADD PRODUCT</NavLink>,
+    label: <NavLink to='/create-product'>{t('sidebar.add_product')}</NavLink>,
     icon: React.createElement(AntDesignOutlined),
   },
   {
     key: 'Manage Products',
-    label: <NavLink to='/products'>MANAGE PRODUCTS</NavLink>,
+    label: <NavLink to='/products'>{t('sidebar.manage_products')}</NavLink>,
     icon: React.createElement(MoneyCollectFilled),
   },
   {
     key: 'Manage Sales',
-    label: <NavLink to='/sales'>MANAGE SALES</NavLink>,
+    label: <NavLink to='/sales'>{t('sidebar.manage_sales')}</NavLink>,
     icon: React.createElement(AreaChartOutlined),
   },
   {
     key: 'Manage Seller',
-    label: <NavLink to='/sellers'>MANAGE SELLERS</NavLink>,
+    label: <NavLink to='/sellers'>{t('sidebar.manage_seller')}</NavLink>,
     icon: React.createElement(ApartmentOutlined),
   },
   {
     key: 'Manage Purchase',
-    label: <NavLink to='/purchases'>MANAGE PURCHASES</NavLink>,
+    label: <NavLink to='/purchases'>{t('sidebar.manage_purchase')}</NavLink>,
     icon: React.createElement(AimOutlined),
   },
   // {
@@ -48,7 +49,7 @@ export const sidebarItems = [
   // },
   {
     key: 'Profile',
-    label: <NavLink to='/profile'>PROFILE</NavLink>,
+    label: <NavLink to='/profile'>{t('sidebar.profile')}</NavLink>,
     icon: React.createElement(UserOutlined),
   },
 ];

@@ -28,5 +28,16 @@
     "login_here": "Login here",
     "submit": "Create account",
     "error_password": "Passwords do not match"
+  },
+  "sidebar": {
+    "title": "Welcome",
+    "dashboard": "Dashboard",
+    "add_product": "Add product",
+    "manage_products": "All Products",
+    "manage_sales": "Manage sales",
+    "manage_seller": "Manage seller",
+    "manage_purchase": "Manage purchase",
+    "profile": "Profile",
+    "logout": "Logout"
   }
 }
