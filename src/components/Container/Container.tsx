@@ -3,12 +3,6 @@ import { Flex, FlexProps } from 'antd';
 
 interface ContainerProps extends FlexProps {
   children: ReactNode;
-  paddingTop?: string | number;
-  paddingBottom?: string | number;
-  paddingRight?: string | number;
-  paddingLeft?: string | number;
-  padding?: string | number;
-  width?: string | number;
   style?: CSSProperties,
 }
 
