@@ -9,7 +9,7 @@ const App = () => {
       <ConfigProvider
         theme={{
           token: {
-            fontFamily: 'Nunito',
+            fontFamily: `"League Spartan", sans-serif`,
           },
         }}
       >
