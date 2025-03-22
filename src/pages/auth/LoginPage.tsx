@@ -3,11 +3,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../redux/hooks';
 import { useTranslation } from 'react-i18next';
 import { Controller, FieldValues, useForm } from 'react-hook-form';
-import { Button, Flex, Form, Input, Typography, Grid } from 'antd';
+import { Flex, Form, Input, Typography, Grid } from 'antd';
 import Container from '../../components/Container/Container';
 import { toast } from 'sonner';
 import { useAuthService } from '../../services/authService';  
 import { loginValidationRules } from '../../utils/validations';
+import CustomButton from '../../components/Button/CustomButton';
 
 const LoginPage = () => {
   const { t } = useTranslation();
@@ -82,9 +83,9 @@ const LoginPage = () => {
           </Form.Item>
 
           <Flex justify="center" style={{marginTop: '3rem'}}>
-            <Button htmlType="submit" type="primary" loading={loading} style={{ textTransform: 'uppercase', fontWeight: 'bold', width: '50%' }}>
+            <CustomButton htmlType="submit" loading={loading} style={{ width: '50%', fontWeight: 'semibold' }}>
               {t('login.submit')}
-            </Button>
+            </CustomButton>
           </Flex>
 
         </Form>

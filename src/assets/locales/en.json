@@ -13,7 +13,10 @@
     "email_validation1": "Email is required",
     "email_validation2": "You must enter a valid email address",
     "password_validation1": "Password is required",
-    "password_validation2": "Password must contain at least 6 characters"
+    "password_validation2": "Password must contain at least 6 characters",
+    "name_validation1": "You must enter your full name",
+    "name_validation2": "Your name should not contain special symbols",
+    "repeat_password_validation1": "Passwords must be equal"
   },
   "register": {
     "title": "Get started",

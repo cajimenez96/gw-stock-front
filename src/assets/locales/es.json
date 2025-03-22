@@ -13,7 +13,10 @@
     "email_validation1": "Es necesario que ingrese un email",
     "email_validation2": "Debe ingresar un email válido",
     "password_validation1": "La contraseña es obligatoria",
-    "password_validation2": "La contraseña debe contener al menos 6 caracteres"
+    "password_validation2": "La contraseña debe contener al menos 6 caracteres",
+    "name_validation1": "Debe ingresar su nombre completo",
+    "name_validation2": "Su nombre no debe contener símbolos especiales",
+    "repeat_password_validation1": "Las contraseñas deben ser iguales"
   },
   "register": {
     "title": "Registrate",

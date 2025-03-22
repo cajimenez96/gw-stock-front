@@ -1,8 +1,6 @@
-import { Button, Flex, Form, Grid, Input } from 'antd';
+import { Flex, Form, Grid, Input } from 'antd';
 import { Controller, FieldValues, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { useRegisterMutation } from '../../redux/features/authApi';
-import { useAppDispatch } from '../../redux/hooks';
 import { toast } from 'sonner';
 import Container from '../../components/Container/Container';
 import Title from 'antd/es/typography/Title';
@@ -10,20 +8,25 @@ import { useTranslation } from 'react-i18next';
 import { loginValidationRules } from '../../utils/validations';
 import { useState } from 'react';
 import { useAuthService } from '../../services/authService';
+import CustomButton from '../../components/Button/CustomButton';
 
 const RegisterPage = () => {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { registerUserService } = useAuthService();
   const { useBreakpoint } = Grid;
   const screens = useBreakpoint();
+  const [loading, setLoading] = useState<boolean>(false);
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-  const [loading, setLoading] = useState<boolean>(false);
+  } = useForm({
+    fullname: '1',
+    email: '2',
+    password: '3',
+    passwordRepeat: '4'
+  });
 
   const width = screens.xl ? '30%' : screens.lg ? '50%' : screens.md ? '60%' : '90%';
 
@@ -37,11 +40,11 @@ const RegisterPage = () => {
     }
 
     try {
-      await registerUserService(data, dispatch);
+      await registerUserService(data);
       toast.success('Successfully register!', {style: {backgroundColor: 'var(--success-color)'}});
       navigate('/login');
     } catch (error) {
-      toast.error(t('login.error'), {style: {backgroundColor: 'var(--error-color)'}});
+      toast.error(t('login.error'), {style: { backgroundColor: 'var(--error-color)' }});
     } finally {
       setLoading(false);
     }
@@ -56,15 +59,15 @@ const RegisterPage = () => {
 
         <Form layout='vertical' onFinish={handleSubmit(onSubmit)}>
 
-        <Form.Item
+          <Form.Item
             label={t('register.full_name')}
-            validateStatus={errors.email ? 'error' : ''}
-            help={errors.email ? errors.email.message : ''}
+            validateStatus={errors.fullname ? 'error' : ''}
+            help={typeof errors?.fullname?.message === 'string' ? errors.fullname.message : ''}
           >
             <Controller
-              name="name"
+              name="fullname"
               control={control}
-              rules={{ required: true }}
+              rules={loginValidationRules.fullname}
               render={({ field }) => <Input {...field} placeholder={t('register.full_name')} />}
             />
           </Form.Item>
@@ -72,7 +75,7 @@ const RegisterPage = () => {
           <Form.Item
             label={t('register.email_label')}
             validateStatus={errors.email ? 'error' : ''}
-            help={errors.email ? errors.email.message : ''}
+            help={typeof errors?.email?.message === 'string' ? errors.email.message : ''}
           >
             <Controller
               name="email"
@@ -85,7 +88,7 @@ const RegisterPage = () => {
           <Form.Item
             label={t('register.password_label')}
             validateStatus={errors.password ? 'error' : ''}
-            help={errors.password ? errors.password.message : ''}
+            help={typeof errors?.password?.message === 'string' ? errors.password.message : ''}
           >
             <Controller
               name="password"
@@ -97,8 +100,8 @@ const RegisterPage = () => {
 
           <Form.Item
             label={t('register.repeat_password_label')}
-            validateStatus={errors.password ? 'error' : ''}
-            help={errors.password ? errors.password.message : ''}
+            validateStatus={errors.passwordRepeat ? 'error' : ''}
+            help={typeof errors?.passwordRepeat?.message === 'string' ? errors.passwordRepeat.message : ''}
           >
             <Controller
               name="passwordRepeat"
@@ -109,13 +112,14 @@ const RegisterPage = () => {
           </Form.Item>
 
           <Flex justify="center" style={{marginTop: '3rem'}}>
-            <Button htmlType="submit" type="primary" loading={loading} style={{ textTransform: 'uppercase', fontWeight: 'bold', width: '50%' }}>
+            <CustomButton htmlType="submit" loading={loading} style={{ width: '50%', fontWeight: 'semibold' }}>
               {t('register.submit')}
-            </Button>
+            </CustomButton>
           </Flex>
 
         </Form>
-        <p style={{ marginTop: '1rem' }}>
+
+        <p style={{ marginTop: '2rem' }}>
           {t('register.already_account')} <Link to='/login'>{t('register.login_here')}</Link>
         </p>
       </Container>
