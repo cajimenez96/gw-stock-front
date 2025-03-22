@@ -1,15 +1,16 @@
 import {useState} from 'react';
 import {Outlet, useNavigate} from 'react-router-dom';
-import { Layout, Menu, Typography} from 'antd';
-import { MenuFoldOutlined, MenuUnfoldOutlined, PoweroffOutlined} from '@ant-design/icons';
+import { Flex, Layout, Menu, Image } from 'antd';
+import { PoweroffOutlined} from '@ant-design/icons';
 import {useAppDispatch} from '../../redux/hooks';
 import {logoutUser} from '../../redux/services/authSlice';
 import { useTranslation } from 'react-i18next';
 import { getSidebarItems } from '../../constant/sidebarItems';
 import CustomButton from '../Button/CustomButton';
+import Logo from '../../assets/agency-logo.png';
+import LogoMobile from '../../assets/agency-logo-mobile.png';
 
 const {Content, Sider} = Layout;
-const { Title } = Typography;
 
 const Sidebar = () => {
   const { t } = useTranslation();
@@ -25,73 +26,45 @@ const Sidebar = () => {
   return (
     <Layout style={{height: '100vh'}}>
       <Sider
+        collapsible
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
         breakpoint="xl"
         collapsedWidth="50"
-        width='300px'
-        style={{backgroundColor: 'var(--bg-white)'}}
+        width={300}
+        style={{ backgroundColor: 'var(--bg-white)', borderRight: '1px soli var(--border)', overflowY: 'hidden' }}
       >
-        <div onClick={() => setCollapsed(!collapsed)} className='dashboard-logo'>
-          {collapsed ? (
-            <MenuUnfoldOutlined style={{color: 'rgb(34, 34, 34)', width: 40}} />
-          ) : (
-            <MenuFoldOutlined style={{color: 'rgb(34, 34, 34)', width: 40}}/>
-          )}
-          <Title
-            level={3}
-            style={{
-              color: 'var(--font-color)',
-              // margin: 'auto',
-              marginLeft: 10,
-              marginTop: 10,
-              display: collapsed ? 'none' : 'block',
-              animationDelay: '5s'
-            }}
-          >
-            {t('sidebar.title')}
-          </Title>
+        <div className='dashboard-logo'>
+          <Image src={collapsed ? LogoMobile : Logo} style={{minHeight: 50}} />
         </div>
-        <Menu
-          mode='inline'
-          style={{backgroundColor: 'var(--bg-white)', color: 'var(--font-color)', fontSize: 16, borderRadius: 0}}
-          defaultSelectedKeys={['Dashboard']}
-          items={getSidebarItems(t)}
-          title={'hola'}
-        />
-        {!collapsed && (
+        <Flex vertical justify='space-between' style={{ height: '100%', paddingTop: '1rem', paddingBottom: collapsed ? '4rem' : '7rem' }}>
+          <Menu
+            mode='inline'
+            style={{ fontSize: 16 }}
+            defaultSelectedKeys={['Dashboard']}
+            items={getSidebarItems(t)}
+          />
+
           <div
             style={{
-              margin: 'auto',
-              position: 'absolute',
-              bottom: 0,
-              padding: '1rem',
+              marginLeft: 'auto',
+              marginRight: 'auto',
               display: 'flex',
-              width: '100%',
+              width: '80%',
               justifyContent: 'center',
             }}
           >
             <CustomButton style={{width: '100%'}} handleClick={handleClick}>
               <PoweroffOutlined />
-              {t('sidebar.logout')}
+              {!collapsed && t('sidebar.logout')}
             </CustomButton>
           </div>
-        )}
+        </Flex>
+
       </Sider>
       <Layout>
-        <Content style={{padding: '2rem', background: '#BBE1FA'}}>
-          <div
-            style={{
-              padding: '1rem',
-              maxHeight: 'calc(100vh - 4rem)',
-              minHeight: 'calc(100vh - 4rem)',
-              background: '#fff',
-              borderRadius: '1rem',
-              overflow: 'auto',
-            }}
-          >
-            <Outlet />
-          </div>
+        <Content className='bg-content' style={{overflowY: 'auto'}}>
+          <Outlet />
         </Content>
       </Layout>
     </Layout>
