@@ -21,12 +21,7 @@ const RegisterPage = () => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    fullname: '1',
-    email: '2',
-    password: '3',
-    passwordRepeat: '4'
-  });
+  } = useForm();
 
   const width = screens.xl ? '30%' : screens.lg ? '50%' : screens.md ? '60%' : '90%';
 
