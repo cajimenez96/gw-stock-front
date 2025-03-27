@@ -1,73 +1,81 @@
-import { Col, Row } from 'antd';
+import { Col, Flex, Row, Typography } from 'antd';
 import MonthlyChart from '../components/Charts/MonthlyChart';
 import Loader from '../components/Loader';
 import { useCountProductsQuery } from '../redux/features/management/productApi';
 import { useYearlySaleQuery } from '../redux/features/management/saleApi';
 import DailyChart from '../components/Charts/DailyChart';
+import Container from '../components/Container/Container';
+import { useTranslation } from 'react-i18next';
+import { ReactNode } from 'react';
+
+interface ContainerItemProps {
+  title: string;
+  children: ReactNode;
+}
+
+const { Title, Text } = Typography;
+
+const ContainerItem = ({title, children}: ContainerItemProps) => {
+  return (
+    <Container vertical className='number-card shadow-container'>
+      <Title level={4} style={{fontSize: 36, paddingBottom: 0 }}>{title}</Title>
+      {children}
+    </Container>
+  );
+}
 
 const Dashboard = () => {
+  const { t } = useTranslation();
   const { data: products, isLoading } = useCountProductsQuery(undefined);
   const { data: yearlyData, isLoading: isLoading1 } = useYearlySaleQuery(undefined);
 
-  if (isLoading && isLoading1) return <Loader />;
-  else
-    return (
-      <>
-        <Row style={{ paddingRight: '1rem' }}>
-          <Col xs={{ span: 24 }} lg={{ span: 8 }} style={{ padding: '.5rem' }}>
-            <div className='number-card'>
-              <h3>Total Stock</h3>
-              <h1>{products?.data?.totalQuantity || 0}</h1>
-            </div>
-          </Col>
-          <Col xs={{ span: 24 }} lg={{ span: 8 }} style={{ padding: '.5rem' }}>
-            <div className='number-card'>
-              <h3>Total Item Sell </h3>
-              <h1>
-                {yearlyData?.data.reduce(
-                  (acc: number, cur: { totalQuantity: number }) => (acc += cur.totalQuantity),
-                  0
-                )}
-              </h1>
-            </div>
-          </Col>
-          <Col xs={{ span: 24 }} lg={{ span: 8 }} style={{ padding: '.5rem' }}>
-            <div className='number-card'>
-              <h3>Total Revenue</h3>
-              <h1>
-                $
-                {yearlyData?.data.reduce(
-                  (acc: number, cur: { totalRevenue: number }) => (acc += cur.totalRevenue),
-                  0
-                )}
-              </h1>
-            </div>
-          </Col>
-        </Row>
-        <div
-          style={{
-            border: '1px solid gray',
-            margin: '1rem',
-            padding: '1rem',
-            borderRadius: '10px',
-          }}
-        >
-          <h1 style={{ textAlign: 'center', marginBottom: '.5rem' }}>Daily Sale and Revenue</h1>
-          <DailyChart />
-        </div>
-        <div
-          style={{
-            border: '1px solid gray',
-            margin: '1rem',
-            padding: '1rem',
-            borderRadius: '10px',
-          }}
-        >
-          <h1 style={{ textAlign: 'center', marginBottom: '.5rem' }}>Monthly Revenue</h1>
-          <MonthlyChart />
-        </div>
-      </>
-    );
+  return (
+    <Flex vertical justify='center' gap={10} style={{ height: '100%' }} >
+      {
+        (isLoading && isLoading1) && <Loader />
+      }
+      <Row>
+        <Col xs={{ span: 24 }} lg={{ span: 8 }} style={{ padding: '.5rem' }}>
+          <ContainerItem title={t('dashboard.total_stock')}>
+            <Text style={{ fontSize: 32 }}>
+              ${products?.data?.totalQuantity || 0}
+            </Text>
+          </ContainerItem>
+        </Col>
+
+        <Col xs={{ span: 24 }} lg={{ span: 8 }} style={{ padding: '.5rem' }}>
+          <ContainerItem title={t('dashboard.total_item_sell')}>
+            <Text style={{ fontSize: 32 }}>
+              {yearlyData?.data.reduce(
+                (acc: number, cur: { totalQuantity: number }) => (acc += cur.totalQuantity),
+                0
+              )}
+            </Text>
+          </ContainerItem>
+        </Col>
+
+        <Col xs={{ span: 24 }} lg={{ span: 8 }} style={{ padding: '.5rem' }}>
+          <ContainerItem title={t('dashboard.total_revenue')}>
+            <Text style={{ fontSize: 32 }}>
+              {yearlyData?.data.reduce(
+                (acc: number, cur: { totalRevenue: number }) => (acc += cur.totalRevenue),
+                0
+              )}
+            </Text>
+          </ContainerItem>
+        </Col>
+
+      </Row>
+      
+      <ContainerItem title={t('dashboard.daily')}>
+        <DailyChart />
+      </ContainerItem>
+
+      <ContainerItem title={t('dashboard.monthly')}>
+        <MonthlyChart />
+      </ContainerItem>
+    </Flex>
+  );
 };
 
 export default Dashboard;

@@ -42,5 +42,12 @@
     "manage_purchase": "Compras",
     "profile": "Perfil",
     "logout": "Cerrar sesión"
+  },
+  "dashboard": {
+    "total_stock": "Stock total",
+    "total_item_sell": "Items vendidos",
+    "total_revenue": "Ingreso total",
+    "daily": "Ventas e ingresos diarios",
+    "monthly": "Ingresos mensuales"
   }
 }

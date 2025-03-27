@@ -42,5 +42,12 @@
     "manage_purchase": "Manage purchase",
     "profile": "Profile",
     "logout": "Logout"
+  },
+  "dashboard": {
+    "total_stock": "Total stock",
+    "total_item_sell": "Total Item sell",
+    "total_revenue": "Total revenue",
+    "daily": "Daily Sale and Revenue",
+    "monthly": "Monthly Revenue"
   }
 }

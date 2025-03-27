@@ -30,7 +30,7 @@ const LoginPage = () => {
   });
   const [loading, setLoading] = useState<boolean>(false);
 
-  const width = screens.lg ? '25%' : screens.md ? '60%' : '90%';
+  const width = screens.xxl ? '25%' : screens.lg ? '30%' : screens.md ? '60%' : '90%';
 
   const onSubmit = async (data: FieldValues) => {
     setLoading(true);

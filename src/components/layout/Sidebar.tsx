@@ -64,7 +64,9 @@ const Sidebar = () => {
       </Sider>
       <Layout>
         <Content className='bg-content' style={{overflowY: 'auto'}}>
-          <Outlet />
+          <div>
+            <Outlet />
+          </div>
         </Content>
       </Layout>
     </Layout>

@@ -116,8 +116,13 @@ li.ant-menu-item {
   overflow: auto;
 }
 
+.shadow-container {
+  box-shadow: 0px 10px 10px -3px rgba(0,0,0,0.1);
+}
+
 .number-card {
-  width: 100%;
+  padding: 20px;
+  /* width: 100%;
   margin: .5rem;
   min-height: 150px;
   border-radius: 1rem;
@@ -126,7 +131,7 @@ li.ant-menu-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
 
 .number-card h3 {
@@ -184,6 +189,8 @@ li.ant-menu-item {
 }
 
 .bg-content {
-  background: radial-gradient(at 13.814868431089122% 36.55432836575234%, hsla(33.33333333333323, 100%, 98.23529411764707%, 1) 0%, hsla(33.33333333333323, 100%, 98.23529411764707%, 0) 100%), radial-gradient(at 26.757512289394448% 14.55716430928402%, hsla(201.99999999999997, 100%, 94.11764705882352%, 1) 0%, hsla(201.99999999999997, 100%, 94.11764705882352%, 0) 100%), radial-gradient(at 71.81123062379334% 73.35997062171711%, hsla(201.99999999999997, 100%, 94.11764705882352%, 1) 0%, hsla(201.99999999999997, 100%, 94.11764705882352%, 0) 100%), radial-gradient(at 80.67571417506147% 77.36934613667599%, hsla(33.33333333333323, 100%, 98.23529411764707%, 1) 0%, hsla(33.33333333333323, 100%, 98.23529411764707%, 0) 100%);
-  padding: 3rem;
+  background: #dce6f2;
+  background: -webkit-linear-gradient(348deg, #dce6f2 0%, #ecf0f6 100%);
+  background: linear-gradient(348deg, #dce6f2 0%, #ecf0f6 100%);
+  padding: 2rem;
 }
