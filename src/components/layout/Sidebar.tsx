@@ -2,18 +2,20 @@ import {useState} from 'react';
 import {Outlet, useNavigate} from 'react-router-dom';
 import { Flex, Layout, Menu, Image } from 'antd';
 import { PoweroffOutlined} from '@ant-design/icons';
-import {useAppDispatch} from '../../redux/hooks';
+import {useAppDispatch, useAppSelector} from '../../redux/hooks';
 import {logoutUser} from '../../redux/services/authSlice';
 import { useTranslation } from 'react-i18next';
 import { getSidebarItems } from '../../constant/sidebarItems';
 import CustomButton from '../Button/CustomButton';
 import Logo from '../../assets/agency-logo.png';
 import LogoMobile from '../../assets/agency-logo-mobile.png';
+import { ItemType, MenuItemType } from 'antd/es/menu/interface';
 
 const {Content, Sider} = Layout;
 
 const Sidebar = () => {
   const { t } = useTranslation();
+  const { user } = useAppSelector((state) => state.auth)
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState<boolean>(false);
@@ -23,6 +25,11 @@ const Sidebar = () => {
     navigate('/');
   };
 
+  const filteredItems = (): ItemType<MenuItemType>[] => {
+    const filteredItemsAux  = getSidebarItems(t).filter((item) => item.role.includes(user ? user.role : ''))
+
+    return filteredItemsAux;
+  }
   return (
     <Layout style={{height: '100vh'}}>
       <Sider
@@ -42,7 +49,7 @@ const Sidebar = () => {
             mode='inline'
             style={{ fontSize: 16 }}
             defaultSelectedKeys={['Dashboard']}
-            items={getSidebarItems(t)}
+            items={filteredItems()}
           />
 
           <div

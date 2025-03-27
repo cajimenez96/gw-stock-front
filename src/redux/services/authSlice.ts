@@ -1,16 +1,19 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
+export type TUserRole = 'OWNER' | 'ADMIN' | 'SELLER';
+
 export type TUser = {
-  _id: string
-  email: string
-  exp: number
-  iat: number
+  _id: string;
+  email: string;
+  role: TUserRole;
+  exp: number;
+  iat: number;
 }
 
 interface InitialState {
-  user: null | TUser
-  token: null | string
+  user: null | TUser;
+  token: null | string;
 }
 
 const initialState: InitialState = {
