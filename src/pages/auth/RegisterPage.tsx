@@ -60,7 +60,7 @@ const RegisterPage = () => {
             help={typeof errors?.fullname?.message === 'string' ? errors.fullname.message : ''}
           >
             <Controller
-              name="fullname"
+              name="name"
               control={control}
               rules={loginValidationRules.fullname}
               render={({ field }) => <Input {...field} placeholder={t('register.full_name')} />}
