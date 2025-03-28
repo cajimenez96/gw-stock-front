@@ -14,10 +14,12 @@ const { Title } = Typography;
 const AllUsersPage = () => {
   const { data, isLoading } = useGetAllUsersQuery(undefined);
   const { t } = useTranslation();
-  const [searchUser, setSearchUser] = useState<string>('');
+  const [searchUser ,setSearchUser] = useState<string>('');
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   const showModal = () => setOpenModal(!openModal);
+
+  console.log(searchUser);
 
   return (
     <Flex vertical gap={20}>

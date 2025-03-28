@@ -10,7 +10,7 @@ const { Search } = Input;
 const CustomSearch = ({
   placeholder = '',
 }: CustomSearchProps) => {
-  const handleSearch = (e) => {
+  const handleSearch = (e: string) => {
     console.log(e)
   }
 
