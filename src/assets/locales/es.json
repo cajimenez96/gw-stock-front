@@ -1,6 +1,7 @@
 {
   "translate": "Idioma",
   "language_changed": "El idioma se ha actualizado correctamente",
+  "search": "Buscar...",  
   "login": {
     "title": "Iniciar sesión",
     "email": "Correo electrónico",
@@ -50,5 +51,21 @@
     "total_revenue": "Ingreso total",
     "daily": "Ventas e ingresos diarios",
     "monthly": "Ingresos mensuales"
+  },
+  "all_user": {
+    "add_user": "Agregar usuario",
+    "users": "Todos los usuarios"
+  },
+  "table_users": {
+    "name": "Nombre completo",
+    "email": "E-mail",
+    "title": "Título",
+    "description": "Descripción",
+    "role": "Categoría",
+    "status": "Estado",
+    "address": "Dirección",
+    "phone": "Teléfono",
+    "city": "Ciudad",
+    "country": "País"
   }
 }

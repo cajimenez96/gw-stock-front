@@ -25,11 +25,8 @@ const Sidebar = () => {
     navigate('/');
   };
 
-  const filteredItems = (): ItemType<MenuItemType>[] => {
-    const filteredItemsAux  = getSidebarItems(t).filter((item) => item.role.includes(user ? user.role : ''))
-
-    return filteredItemsAux;
-  }
+  const filteredItems = (): ItemType<MenuItemType>[] => getSidebarItems(t).filter((item) => item.role.includes(user ? user.role : ''));
+  
   return (
     <Layout style={{height: '100vh'}}>
       <Sider

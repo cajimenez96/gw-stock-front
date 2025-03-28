@@ -28,6 +28,14 @@ const authApi = baseApi.injectEndpoints({
       providesTags: ['user']
     }),
 
+    getAllUsers: builder.query({
+      query: () => ({
+        url: '/users',
+        method: 'GET',
+      }),
+      providesTags: ['user']
+    }),
+
     changePassword: builder.mutation({
       query: (payload) => ({
         url: '/users/change-password',
@@ -53,6 +61,7 @@ export const {
   useLoginMutation,
   useRegisterMutation,
   useGetSelfProfileQuery,
+  useGetAllUsersQuery,
   useChangePasswordMutation,
-  useUpdateProfileMutation
+  useUpdateProfileMutation,
 } = authApi

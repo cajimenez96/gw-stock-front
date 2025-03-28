@@ -14,6 +14,7 @@ import SaleManagementPage from '../pages/managements/SaleManagementPage';
 import SellerManagementPage from '../pages/managements/SellerManagementPage';
 import ChangePasswordPage from '../pages/ChangePasswordPage';
 import EditProfilePage from '../pages/EditProfilePage';
+import AllUsersPage from '../pages/AllUsersPage';
 
 export const router = createBrowserRouter([
   {
@@ -97,6 +98,14 @@ export const router = createBrowserRouter([
         element: (
           <ProtectRoute>
             <ChangePasswordPage />
+          </ProtectRoute>
+        ),
+      },
+      {
+        path: 'all-users',
+        element: (
+          <ProtectRoute>
+            <AllUsersPage />
           </ProtectRoute>
         ),
       },

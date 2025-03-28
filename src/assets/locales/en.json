@@ -1,6 +1,7 @@
 {
   "translate": "Language",
   "language_changed": "The language has been updated successfully",
+  "search": "Search...",
   "login": {
     "title": "Login",
     "email": "E-mail",
@@ -50,5 +51,21 @@
     "total_revenue": "Total revenue",
     "daily": "Daily Sale and Revenue",
     "monthly": "Monthly Revenue"
+  },
+  "all_user": {
+    "add_user": "Add user",
+    "users": "All Users"
+  },
+  "table_users": {
+    "name": "Full name",
+    "email": "E-mail",
+    "title": "Title",
+    "description": "Description",
+    "role": "Role",
+    "status": "Status",
+    "address": "Address",
+    "phone": "Phone",
+    "city": "City",
+    "country": "Country"
   }
 }

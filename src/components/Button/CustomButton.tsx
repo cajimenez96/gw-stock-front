@@ -17,8 +17,7 @@ const CustomButton = ({
   handleClick
 }: CustomButtonProps) => {
   const defaultStyle = {
-    paddingTop: 20,
-    paddingBottom: 20,
+    height: 30
   };
 
   return (
