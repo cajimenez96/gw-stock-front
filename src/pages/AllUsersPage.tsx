@@ -42,21 +42,14 @@ const AllUsersPage = () => {
         </Flex>
       </Container>
       <Container style={{ height: '80vh' }}>
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <Row>
-            <Col>
-              <Table
-                virtual
-                scroll={{ x: 100, y: 500 }}
-                style={{ tableLayout: 'auto' }}
-                dataSource={data?.data}
-                columns={allUsersColumns}
-              />
-            </Col>
-          </Row>
-        )}
+        <Table
+          virtual
+          scroll={{ x: 100, y: 500 }}
+          style={{ tableLayout: 'auto' }}
+          dataSource={data?.data}
+          columns={allUsersColumns}
+          loading={isLoading}
+        />
       </Container>
 
       <Modal

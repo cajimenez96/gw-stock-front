@@ -159,24 +159,26 @@ const ProductManagePage = () => {
         </Row>
       </Container>
 
-      <Table
-        size='small'
-        loading={isFetching}
-        virtual
-        // scroll={{ x: 2000, y: 500 }}
-        style={{ tableLayout: 'auto' }}
-        columns={columns}
-        dataSource={tableData}
-        pagination={false}
-      />
-      <Flex justify='center' style={{ marginTop: '1rem' }}>
-        <Pagination
-          current={current}
-          onChange={onChange}
-          defaultPageSize={query.limit}
-          total={products?.meta?.total}
+      <Container style={{ height: '80vh' }}>
+        <Table
+          loading={isFetching}
+          virtual
+          // scroll={{ x: 2000, y: 500 }}
+          style= {{ width : '100%' }}
+          columns={columns}
+          dataSource={tableData}
+          // pagination={false}
         />
-      </Flex>
+        {/* <Flex justify='center' style={{ marginTop: '1rem' }}>
+          <Pagination
+            current={current}
+            onChange={onChange}
+            defaultPageSize={query.limit}
+            total={products?.meta?.total}
+          />
+        </Flex> */}
+      </Container>
+
     </Flex>
   );
 };

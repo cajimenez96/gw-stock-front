@@ -67,5 +67,7 @@
     "phone": "Phone",
     "city": "City",
     "country": "Country"
+  },
+  "products": {
   }
 }
