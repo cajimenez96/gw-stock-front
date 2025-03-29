@@ -1,25 +1,42 @@
 import { Input } from "antd"
+import { ChangeEvent } from "react";
 
 interface CustomSearchProps {
   placeholder?: string;
-  setQuery: (e: string) => void;
+  name?: string;
+  label?: string;
+  id?: string;
+  value?: string | number;
+  handleChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleSearch?: (e: string) => void;
 }
 
 const { Search } = Input;
 
 const CustomSearch = ({
+  value,
   placeholder = '',
+  label,
+  id,
+  name = 'name',
+  handleChange,
+  handleSearch,
 }: CustomSearchProps) => {
-  const handleSearch = (e: string) => {
-    console.log(e)
-  }
-
+  
   return (
-    <Search
-      placeholder={placeholder}
-      enterButton
-      onSearch={handleSearch}
-    />
+    <>
+      <label htmlFor={id}>{label}</label>
+      <Search
+        id={id}
+        name={name}
+        placeholder={placeholder}
+        enterButton
+        value={value}
+        onChange={handleChange}
+        onSearch={handleSearch}
+        style={{ marginTop: 10 }}
+      />
+    </>
   )
 }
 

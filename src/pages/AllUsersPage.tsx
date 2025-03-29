@@ -1,6 +1,6 @@
 import { Col, Flex, Modal, Row, Table, Typography } from "antd";
 import Container from "../components/Container/Container";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import CustomSearch from "../components/CustomSearch";
 import { useTranslation } from "react-i18next";
 import CustomButton from "../components/Button/CustomButton";
@@ -19,6 +19,10 @@ const AllUsersPage = () => {
 
   const showModal = () => setOpenModal(!openModal);
 
+  const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value)
+  }
+
   console.log(searchUser);
 
   return (
@@ -29,9 +33,9 @@ const AllUsersPage = () => {
         </Title>
         <Flex gap={30} align="center">
           <div style={{ width: 300 }}>
-            <CustomSearch placeholder={t('search')} setQuery={setSearchUser} />
+            <CustomSearch placeholder={t('search')} handleChange={handleChange} handleSearch={setSearchUser} />
           </div>
-            <CustomButton handleClick={showModal}>
+            <CustomButton handleClick={showModal} style={{ marginTop: 10 }}>
               <UserAddOutlined />
               {t('all_user.add_user')}
             </CustomButton>
@@ -49,7 +53,6 @@ const AllUsersPage = () => {
                 style={{ tableLayout: 'auto' }}
                 dataSource={data?.data}
                 columns={allUsersColumns}
-                
               />
             </Col>
           </Row>
