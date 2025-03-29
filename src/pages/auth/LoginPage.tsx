@@ -35,12 +35,9 @@ const LoginPage = () => {
       }
     } catch (error: any) {
       toast.error(error.data.message, { id: toastId });
-      // toastMessage({ icon: 'error', text: error.data.message });
     }
   };
-
-  // if (isLoading) <Loader />;
-  // else
+  
   return (
     <Flex justify='center' align='center' style={{ height: '100vh' }}>
       <Flex
