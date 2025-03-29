@@ -8,7 +8,7 @@ type LanguageProps = 'es' | 'us';
 
 const Language = () => {
   const { t } = useTranslation();
-  const [language, setLanguage] = useState<LanguageProps>('us');
+  const [language, setLanguage] = useState<LanguageProps>('es');
 
   const handleMenuClick: (lang: LanguageProps) => void = (lang) => {
     setLanguage(lang);
