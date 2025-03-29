@@ -1,7 +1,7 @@
 import { DeleteFilled, EditFilled } from '@ant-design/icons';
 import type { PaginationProps, TableColumnsType } from 'antd';
-import { Button, Col, Flex, Modal, Pagination, Row, Table, Tag } from 'antd';
-import { useState } from 'react';
+import { Button, Col, Flex, Modal, Pagination, Row, Select, Table } from 'antd';
+import { ChangeEvent, useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import {
   useAddStockMutation,
@@ -10,13 +10,16 @@ import {
   useUpdateProductMutation,
 } from '../../redux/features/management/productApi';
 import { ICategory, IProduct } from '../../types/product.types';
-import ProductManagementFilter from '../../components/query-filters/ProductManagementFilter';
 import CustomInput from '../../components/CustomInput';
 import toastMessage from '../../lib/toastMessage';
 import { useGetAllCategoriesQuery } from '../../redux/features/management/categoryApi';
 import { useGetAllSellerQuery } from '../../redux/features/management/sellerApi';
 import { useGetAllBrandsQuery } from '../../redux/features/management/brandApi';
 import { useCreateSaleMutation } from '../../redux/features/management/saleApi';
+import Container from '../../components/Container/Container';
+import CustomSearch from '../../components/CustomSearch';
+import { t } from 'i18next';
+import { useAppSelector } from '../../redux/hooks';
 
 const ProductManagePage = () => {
   const [current, setCurrent] = useState(1);
@@ -27,11 +30,30 @@ const ProductManagePage = () => {
     limit: 10,
   });
 
+  const {data: categories} = useGetAllCategoriesQuery(undefined);
   const { data: products, isFetching } = useGetAllProductsQuery(query);
+  const { user } = useAppSelector((state) => state.auth)
 
   const onChange: PaginationProps['onChange'] = (page) => {
     setCurrent(page);
   };
+
+  const renderItemModals = (item: any) => {
+    if (user?.role === 'SELLER') {
+      return (
+        <SellProductModal product={item} />
+      );
+    } else {
+      return (
+        <Flex justify='center' gap={5}>
+          <SellProductModal product={item} />
+          <AddStockModal product={item} />
+          <UpdateProductModal product={item} />
+          <DeleteProductModal id={item.key} />
+        </Flex>
+      );
+    }
+  }
 
   const tableData = products?.data?.map((product: IProduct) => ({
     key: product._id,
@@ -52,59 +74,97 @@ const ProductManagePage = () => {
       title: 'Product Name',
       key: 'name',
       dataIndex: 'name',
+      // width: '10%'
     },
     {
       title: 'Category',
       key: 'categoryName',
       dataIndex: 'categoryName',
       align: 'center',
+      // width: '10%'
     },
     {
       title: 'price',
       key: 'price',
       dataIndex: 'price',
       align: 'center',
+      // width: '10%'
     },
     {
       title: 'stock',
       key: 'stock',
       dataIndex: 'stock',
       align: 'center',
+      // width: '10%'
     },
-    {
-      title: 'Purchase From',
-      key: 'sellerName',
-      dataIndex: 'sellerName',
-      align: 'center',
-      render: (sellerName: string) => {
-        if (sellerName === 'DELETED SELLER') return <Tag color='red'>{sellerName}</Tag>;
-        return <Tag color='green'>{sellerName}</Tag>;
-      },
-    },
+    // {
+    //   title: 'Purchase From',
+    //   key: 'sellerName',
+    //   dataIndex: 'sellerName',
+    //   align: 'center',
+    //   render: (sellerName: string) => {
+    //     if (sellerName === 'DELETED SELLER') return <Tag color='red'>{sellerName}</Tag>;
+    //     return <Tag color='green'>{sellerName}</Tag>;
+    //   },
+    // },
     {
       title: 'Action',
       key: 'x',
       align: 'center',
-      render: (item) => {
-        return (
-          <div style={{ display: 'flex' }}>
-            <SellProductModal product={item} />
-            <AddStockModal product={item} />
-            <UpdateProductModal product={item} />
-            <DeleteProductModal id={item.key} />
-          </div>
-        );
-      },
-      width: '1%',
+      render: (item) => renderItemModals(item),
+      // width: 250,
     },
   ];
 
+  const handleChangeFilter = (e: ChangeEvent<HTMLInputElement>) => {
+    setQuery((prev) => ({...prev, name: e.target.value}))
+  }
+
+  const handleChangeCategory = (value: string) => {
+    setQuery((prev) => ({...prev, category: value}))
+  }
+
   return (
-    <>
-      <ProductManagementFilter query={query} setQuery={setQuery} />
+    <Flex vertical gap={20}>
+      <Container style={{ padding: 20 }}>
+        <Row gutter={[16, { xs: 8, sm: 16, md: 24, lg: 32 }]} style={{width: '100%'}} align={'middle'}>
+          <Col xs={{span: 24}} md={{span: 8}}>
+            <CustomSearch
+              id={'product'}
+              name={'name'}
+              label={'Buscar productos por nombre'}
+              placeholder={t('search')}
+              handleChange={handleChangeFilter}
+            />
+          </Col>
+          <Col xs={{span: 24}} md={{span: 4}}>
+            <label htmlFor="category">Categoría</label>
+            <Select
+              id="category"
+              placeholder='Categoría del producto'
+              onChange={handleChangeCategory}
+              style={{ width: '100%', marginTop: 10 }}
+            >
+              <Select.Option value='' style={{ color: 'grey' }} selected>Todas las categorías</Select.Option>
+              {categories?.data?.map((category: {_id: string; name: string}) => (
+                <Select.Option
+                  key={category._id}
+                  value={category._id}
+                >
+                  {category.name}
+                </Select.Option>
+              ))}
+            </Select>
+          </Col>
+        </Row>
+      </Container>
+
       <Table
         size='small'
         loading={isFetching}
+        virtual
+        // scroll={{ x: 2000, y: 500 }}
+        style={{ tableLayout: 'auto' }}
         columns={columns}
         dataSource={tableData}
         pagination={false}
@@ -117,7 +177,7 @@ const ProductManagePage = () => {
           total={products?.meta?.total}
         />
       </Flex>
-    </>
+    </Flex>
   );
 };
 

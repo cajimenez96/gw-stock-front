@@ -29,7 +29,7 @@ export const getSidebarItems = (t: any) => [
     key: 'Manage Products',
     label: <NavLink to='/products'>{t('sidebar.manage_products')}</NavLink>,
     icon: React.createElement(MoneyCollectFilled),
-    role: ['OWNER', 'ADMIN']
+    role: ['OWNER', 'ADMIN', 'SELLER']
   },
   {
     key: 'Manage Sales',
@@ -41,7 +41,7 @@ export const getSidebarItems = (t: any) => [
     key: 'Manage Seller',
     label: <NavLink to='/sellers'>{t('sidebar.manage_seller')}</NavLink>,
     icon: React.createElement(ApartmentOutlined),
-    role: ['OWNER', 'ADMIN',]
+    role: ['OWNER', 'ADMIN']
   },
   {
     key: 'Manage Purchase',
@@ -58,7 +58,7 @@ export const getSidebarItems = (t: any) => [
     key: 'Profile',
     label: <NavLink to='/profile'>{t('sidebar.profile')}</NavLink>,
     icon: React.createElement(UserOutlined),
-    role: ['OWNER', 'ADMIN']
+    role: ['OWNER', 'ADMIN', 'SELLER']
   },
   {
     key: 'Get All Users',

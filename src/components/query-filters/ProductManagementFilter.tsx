@@ -1,4 +1,4 @@
-import {Col, Flex, Row, Slider} from 'antd';
+import {Col, Flex, Row} from 'antd';
 import React from 'react';
 import {useGetAllCategoriesQuery} from '../../redux/features/management/categoryApi';
 import {useGetAllBrandsQuery} from '../../redux/features/management/brandApi';
@@ -16,16 +16,16 @@ const ProductManagementFilter = ({query, setQuery}: ProductManagementFilterProps
 
   return (
     <Flex
-      style={{
-        border: '1px solid grey',
-        padding: '1rem',
-        marginBottom: '.5rem',
-        borderRadius: '1rem',
-        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.4) inset',
-      }}
+      // style={{
+      //   border: '1px solid grey',
+      //   padding: '1rem',
+      //   marginBottom: '.5rem',
+      //   borderRadius: '1rem',
+      //   boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.4) inset',
+      // }}
     >
       <Row gutter={2} style={{width: '100%'}}>
-        <Col xs={{span: 24}} md={{span: 8}}>
+        {/* <Col xs={{span: 24}} md={{span: 8}}>
           <label style={{fontWeight: 700}}>Price Range</label>
           <Slider
             range
@@ -40,7 +40,7 @@ const ProductManagementFilter = ({query, setQuery}: ProductManagementFilterProps
               }));
             }}
           />
-        </Col>
+        </Col> */}
         <Col xs={{span: 24}} md={{span: 8}}>
           <label style={{fontWeight: 700}}>Search by product name</label>
           <input
