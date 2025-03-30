@@ -6,8 +6,10 @@ import { useLoginMutation } from '../../redux/features/authApi';
 import { useAppDispatch } from '../../redux/hooks';
 import { loginUser } from '../../redux/services/authSlice';
 import decodeToken from '../../utils/decodeToken';
+import { useTranslation } from 'react-i18next';
 
 const LoginPage = () => {
+  const { t } = useTranslation();
   const [userLogin] = useLoginMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -17,8 +19,8 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: 'user@gmail.com',
-      password: 'pass123',
+      email: '',
+      password: '',
     },
   });
 
@@ -31,7 +33,7 @@ const LoginPage = () => {
         const user = decodeToken(res.data.token);
         dispatch(loginUser({ token: res.data.token, user }));
         navigate('/');
-        toast.success('Successfully Login!', { id: toastId });
+        toast.success(t('login.successfully'), { id: toastId });
       }
     } catch (error: any) {
       toast.error(error.data.message, { id: toastId });
@@ -50,18 +52,18 @@ const LoginPage = () => {
         }}
       >
         <h1 style={{ marginBottom: '.7rem', textAlign: 'center', textTransform: 'uppercase' }}>
-          Login
+          {t('login.title')}
         </h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             type='text'
             {...register('email', { required: true })}
-            placeholder='Your Name*'
+            placeholder={t('login.email')}
             className={`input-field ${errors['email'] ? 'input-field-error' : ''}`}
           />
           <input
             type='password'
-            placeholder='Your Password*'
+            placeholder={t('login.password')}
             className={`input-field ${errors['password'] ? 'input-field-error' : ''}`}
             {...register('password', { required: true })}
           />
@@ -71,12 +73,12 @@ const LoginPage = () => {
               type='primary'
               style={{ textTransform: 'uppercase', fontWeight: 'bold' }}
             >
-              Login
+              {t('login.submit')}
             </Button>
           </Flex>
         </form>
         <p style={{ marginTop: '1rem' }}>
-          Don't have any account? <Link to='/register'>Resister Here</Link>
+        {t('login.register')} <Link to='/register'>{t('login.register_link')}</Link>
         </p>
       </Flex>
     </Flex>

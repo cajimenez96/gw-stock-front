@@ -1,14 +1,16 @@
-import {useState} from 'react';
-import {Outlet, useNavigate} from 'react-router-dom';
-import {Button, Layout, Menu} from 'antd';
-import {LogoutOutlined} from '@ant-design/icons';
-import {sidebarItems} from '../../constant/sidebarItems';
-import {useAppDispatch} from '../../redux/hooks';
-import {logoutUser} from '../../redux/services/authSlice';
+import { useState } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { Button, Layout, Menu } from 'antd';
+import { LogoutOutlined } from '@ant-design/icons';
+import { getSidebarItems } from '../../constant/sidebarItems';
+import { useAppDispatch } from '../../redux/hooks';
+import { logoutUser } from '../../redux/services/authSlice';
+import { useTranslation } from 'react-i18next';
 
-const {Content, Sider} = Layout;
+const { Content, Sider } = Layout;
 
 const Sidebar = () => {
+  const { t } = useTranslation();
   const [showLogoutBtn, setShowLogoutBtn] = useState(true);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -38,8 +40,8 @@ const Sidebar = () => {
         }}
       >
         <div className='demo-logo-vertical'>
-          <h1 style={{color: '#fff', padding: '1rem', fontSize: '1.8rem', textAlign: 'center'}}>
-            WELCOME
+          <h1 style={{color: '#fff', padding: '1rem', fontSize: '1.8rem', textAlign: 'center', textTransform: 'uppercase'}}>
+            {t('sidebar.title')}
           </h1>
         </div>
         <Menu
@@ -47,7 +49,7 @@ const Sidebar = () => {
           mode='inline'
           style={{backgroundColor: '#164863', fontWeight: '700'}}
           defaultSelectedKeys={['Dashboard']}
-          items={sidebarItems}
+          items={getSidebarItems(t)}
         />
         {showLogoutBtn && (
           <div
@@ -73,7 +75,7 @@ const Sidebar = () => {
               onClick={handleClick}
             >
               <LogoutOutlined />
-              Logout
+              {t('sidebar.logout')}
             </Button>
           </div>
         )}
