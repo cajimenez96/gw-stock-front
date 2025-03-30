@@ -1,0 +1,73 @@
+{
+  "translate": "Idioma",
+  "language_changed": "El idioma se ha actualizado correctamente",
+  "search": "Buscar...",  
+  "login": {
+    "title": "Iniciar sesión",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "required": "Debe completar este campo",
+    "submit": "Iniciar sesión",
+    "register": "¿No tienes una cuenta?",
+    "register_link": "Regístrate",
+    "error": "Verifique su usuario o contraseña",
+    "email_validation1": "Es necesario que ingrese un email",
+    "email_validation2": "Debe ingresar un email válido",
+    "password_validation1": "La contraseña es obligatoria",
+    "password_validation2": "La contraseña debe contener al menos 6 caracteres",
+    "name_validation1": "Debe ingresar su nombre completo",
+    "name_validation2": "Su nombre no debe contener símbolos especiales",
+    "repeat_password_validation1": "Las contraseñas deben ser iguales"
+  },
+  "register": {
+    "title": "Registrate",
+    "full_name": "Nombre completo",
+    "email": "Correo electrónico",
+    "email_label": "Tú correo electrónico",
+    "password": "Contraseña",
+    "password_label": "Tú contraseña",
+    "repeat_password": "Repetir contraseña",
+    "repeat_password_label": "Repetir tu contraseña",
+    "already_account": "¿Ya tienes una cuenta?",
+    "login_here": "Iniciar sesión",
+    "submit": "Crear cuenta",
+    "error_password": "Las contraseñas no coinciden"
+  },
+  "sidebar": {
+    "title": "Bienvenidos",
+    "dashboard": "Panel principal",
+    "add_product": "Agregar productos",
+    "manage_products": "Productos",
+    "manage_sales": "Ventas",
+    "manage_seller": "Vendedores",
+    "manage_purchase": "Compras",
+    "profile": "Perfil",
+    "users": "Todos los usuarios",
+    "logout": "Cerrar sesión"
+  },
+  "dashboard": {
+    "total_stock": "Stock total",
+    "total_item_sell": "Items vendidos",
+    "total_revenue": "Ingreso total",
+    "daily": "Ventas e ingresos diarios",
+    "monthly": "Ingresos mensuales"
+  },
+  "all_user": {
+    "add_user": "Agregar usuario",
+    "users": "Todos los usuarios"
+  },
+  "table_users": {
+    "name": "Nombre completo",
+    "email": "E-mail",
+    "title": "Título",
+    "description": "Descripción",
+    "role": "Categoría",
+    "status": "Estado",
+    "address": "Dirección",
+    "phone": "Teléfono",
+    "city": "Ciudad",
+    "country": "País"
+  },
+  "products": {
+  }
+}

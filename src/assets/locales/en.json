@@ -1,0 +1,73 @@
+{
+  "translate": "Language",
+  "language_changed": "The language has been updated successfully",
+  "search": "Search...",
+  "login": {
+    "title": "Login",
+    "email": "E-mail",
+    "password": "Password",
+    "required": "You must complete this field",
+    "submit": "Log In",
+    "register": "Don't have any account?",
+    "register_link": "Register here",
+    "error": "Verify your credentials",
+    "email_validation1": "Email is required",
+    "email_validation2": "You must enter a valid email address",
+    "password_validation1": "Password is required",
+    "password_validation2": "Password must contain at least 6 characters",
+    "name_validation1": "You must enter your full name",
+    "name_validation2": "Your name should not contain special symbols",
+    "repeat_password_validation1": "Passwords must be equal"
+  },
+  "register": {
+    "title": "Get started",
+    "full_name": "Full name",
+    "email": "E-mail",
+    "email_label": "Your E-mail",
+    "password": "Password",
+    "password_label": "Your Password",
+    "repeat_password": "Repeat Password",
+    "repeat_password_label": "Repeat your Password",
+    "already_account": "Already have an account?",
+    "login_here": "Login here",
+    "submit": "Create account",
+    "error_password": "Passwords do not match"
+  },
+  "sidebar": {
+    "title": "Welcome",
+    "dashboard": "Dashboard",
+    "add_product": "Add product",
+    "manage_products": "All Products",
+    "manage_sales": "Manage sales",
+    "manage_seller": "Manage seller",
+    "manage_purchase": "Manage purchase",
+    "profile": "Profile",
+    "users": "All Users",
+    "logout": "Logout"
+  },
+  "dashboard": {
+    "total_stock": "Total stock",
+    "total_item_sell": "Total Item sell",
+    "total_revenue": "Total revenue",
+    "daily": "Daily Sale and Revenue",
+    "monthly": "Monthly Revenue"
+  },
+  "all_user": {
+    "add_user": "Add user",
+    "users": "All Users"
+  },
+  "table_users": {
+    "name": "Full name",
+    "email": "E-mail",
+    "title": "Title",
+    "description": "Description",
+    "role": "Role",
+    "status": "Status",
+    "address": "Address",
+    "phone": "Phone",
+    "city": "City",
+    "country": "Country"
+  },
+  "products": {
+  }
+}
