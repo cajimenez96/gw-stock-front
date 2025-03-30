@@ -1,5 +1,4 @@
 {
-  "translate": "Idioma",
   "language_changed": "El idioma se ha actualizado correctamente",
   "search": "Buscar...",  
   "login": {
@@ -17,7 +16,8 @@
     "password_validation2": "La contraseña debe contener al menos 6 caracteres",
     "name_validation1": "Debe ingresar su nombre completo",
     "name_validation2": "Su nombre no debe contener símbolos especiales",
-    "repeat_password_validation1": "Las contraseñas deben ser iguales"
+    "repeat_password_validation1": "Las contraseñas deben ser iguales",
+    "successfully": "Bienvenido!"
   },
   "register": {
     "title": "Registrate",

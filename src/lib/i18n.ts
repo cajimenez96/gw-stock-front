@@ -4,20 +4,25 @@ import { I18nextProvider } from 'react-i18next';
 import en from '../assets/locales/en.json';
 import es from '../assets/locales/es.json';
 
+interface Resources {
+  en: { translation: typeof en };
+  es: { translation: typeof es };
+}
+
 i18n
   .use(initReactI18next)
-  .init({
+  .init<Resources>({
     resources: {
-      en: {
-        translation: en,
-      },
-      es: {
-        translation: es,
-      },
+      es: { translation: es },
+      en: { translation: en },
     },
-    fallbackLng: 'es', 
+    lng: 'en',
+    fallbackLng: 'en',
     interpolation: {
       escapeValue: false,
+    },
+    react: {
+      useSuspense: false
     },
   });
 
