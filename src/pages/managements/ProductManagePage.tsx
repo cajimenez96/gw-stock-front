@@ -17,8 +17,10 @@ import { useGetAllCategoriesQuery } from '../../redux/features/management/catego
 import { useGetAllSellerQuery } from '../../redux/features/management/sellerApi';
 import { useGetAllBrandsQuery } from '../../redux/features/management/brandApi';
 import { useCreateSaleMutation } from '../../redux/features/management/saleApi';
+import { useTranslation } from 'react-i18next';
 
 const ProductManagePage = () => {
+  const { t } = useTranslation();
   const [current, setCurrent] = useState(1);
   const [query, setQuery] = useState({
     name: '',
@@ -49,30 +51,30 @@ const ProductManagePage = () => {
 
   const columns: TableColumnsType<any> = [
     {
-      title: 'Product Name',
+      title: t('product_management_view.name'),
       key: 'name',
       dataIndex: 'name',
     },
     {
-      title: 'Category',
+      title: t('product_management_view.category'),
       key: 'categoryName',
       dataIndex: 'categoryName',
       align: 'center',
     },
     {
-      title: 'price',
+      title: t('product_management_view.price'),
       key: 'price',
       dataIndex: 'price',
       align: 'center',
     },
     {
-      title: 'stock',
+      title: t('product_management_view.stock'),
       key: 'stock',
       dataIndex: 'stock',
       align: 'center',
     },
     {
-      title: 'Purchase From',
+      title: t('product_management_view.purchase'),
       key: 'sellerName',
       dataIndex: 'sellerName',
       align: 'center',
@@ -82,7 +84,7 @@ const ProductManagePage = () => {
       },
     },
     {
-      title: 'Action',
+      title: t('product_management_view.action'),
       key: 'x',
       align: 'center',
       render: (item) => {
@@ -125,6 +127,7 @@ const ProductManagePage = () => {
  * Sell Product Modal
  */
 const SellProductModal = ({ product }: { product: IProduct & { key: string } }) => {
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {
     handleSubmit,
@@ -173,13 +176,13 @@ const SellProductModal = ({ product }: { product: IProduct & { key: string } }) 
         className='table-btn'
         style={{ backgroundColor: 'royalblue' }}
       >
-        Sell
+        {t('product_management_view.sell')}
       </Button>
       <Modal title='Sell Product' open={isModalOpen} onCancel={handleCancel} footer={null}>
         <form onSubmit={handleSubmit(onSubmit)} style={{ marginTop: '1rem' }}>
           <CustomInput
             name='buyerName'
-            label='Buyer Name'
+            label={t('product_management_view.buyer_name')}
             errors={errors}
             required={true}
             register={register}
@@ -187,7 +190,7 @@ const SellProductModal = ({ product }: { product: IProduct & { key: string } }) 
           />
           <CustomInput
             name='date'
-            label='Selling date'
+            label={t('product_management_view.date')}
             errors={errors}
             required={true}
             register={register}
@@ -195,7 +198,7 @@ const SellProductModal = ({ product }: { product: IProduct & { key: string } }) 
           />
           <CustomInput
             name='quantity'
-            label='Quantity'
+            label={t('product_management_view.quantity')}
             errors={errors}
             required={true}
             register={register}
@@ -203,7 +206,7 @@ const SellProductModal = ({ product }: { product: IProduct & { key: string } }) 
           />
           <Flex justify='center' style={{ marginTop: '1rem' }}>
             <Button htmlType='submit' type='primary'>
-              Sell Product
+              {t('product_management_view.sell')}
             </Button>
           </Flex>
         </form>
