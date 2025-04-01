@@ -1,6 +1,8 @@
 {
+  "translate": "Traducir",
   "language_changed": "El idioma se ha actualizado correctamente",
-  "search": "Buscar...",  
+  "search": "Buscar...",
+  "close": "Cerrar",
   "login": {
     "title": "Iniciar sesión",
     "email": "Correo electrónico",
@@ -52,6 +54,30 @@
     "daily": "Ventas e ingresos diarios",
     "monthly": "Ingresos mensuales"
   },
+  "products_view": {
+    "btn_add": "Añadir",
+    "add_product": "Agregar productos",
+    "email": "Email",
+    "contact": "N° Contacto",
+    "name": "Nombre",
+    "price": "Precio",
+    "stock": "Cantidad",
+    "seller": "Vendedor",
+    "category": "Categoría",
+    "brand": "Marca",
+    "description": "Descripción",
+    "size": "Tamaño",
+    "select_seller": "Seleccione un vendedor",
+    "select_category": "Seleccione una categoría",
+    "select_brand": "Selecione su marca",
+    "select_size": "Selecione el tamaño del producto",
+    "small_size": "Pequeño",
+    "medium_size": "Mediano",
+    "large_size": "Grande",
+    "create_seller": "Agregar nuevo vendedor",
+    "create_category": "Agregar nueva categoría",
+    "create_brand": "Agregar nueva marca"
+  },
   "all_user": {
     "add_user": "Agregar usuario",
     "users": "Todos los usuarios"
@@ -67,7 +93,5 @@
     "phone": "Teléfono",
     "city": "Ciudad",
     "country": "País"
-  },
-  "products": {
   }
 }

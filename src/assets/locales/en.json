@@ -2,6 +2,7 @@
   "translate": "Language",
   "language_changed": "The language has been updated successfully",
   "search": "Search...",
+  "close": "Close",
   "login": {
     "title": "Login",
     "email": "E-mail",
@@ -53,6 +54,30 @@
     "daily": "Daily Sale and Revenue",
     "monthly": "Monthly Revenue"
   },
+  "products_view": {
+    "btn_add": "Add",
+    "add_product": "Add new product",
+    "email": "Email",
+    "contact": "Contact N°",
+    "name": "Name",
+    "price": "Price",
+    "stock": "Stocl",
+    "seller": "Seller",
+    "category": "Category",
+    "brand": "Brand",
+    "description": "Description",
+    "size": "Size",
+    "select_seller": "Select seller",
+    "select_category": "Select category",
+    "select_brand": "Select brand",
+    "select_size": "Select product size",
+    "small_size": "Small",
+    "medium_size": "Medium",
+    "large_size": "Large",
+    "create_seller": "Add new seller",
+    "create_category": "Add new category",
+    "create_brand": "Add new brand"
+  },
   "all_user": {
     "add_user": "Add user",
     "users": "All Users"
@@ -68,7 +93,5 @@
     "phone": "Phone",
     "city": "City",
     "country": "Country"
-  },
-  "products": {
   }
 }

@@ -2,8 +2,10 @@ import { Button, Flex } from 'antd';
 import { useState } from 'react';
 import { useCreateBrandMutation } from '../../redux/features/management/brandApi';
 import toastMessage from '../../lib/toastMessage';
+import { useTranslation } from 'react-i18next';
 
 const CreateBrand = () => {
+  const { t } = useTranslation();
   const [createCategory] = useCreateBrandMutation();
   const [brand, setBrand] = useState('');
 
@@ -35,14 +37,14 @@ const CreateBrand = () => {
           textTransform: 'uppercase',
         }}
       >
-        Create New Brand
+        {t('products_view.create_brand')}
       </h3>
       <input
         type='text'
         value={brand}
         onChange={(e) => setBrand(e.target.value)}
         className='input-field'
-        placeholder='Brand Name'
+        placeholder={t('products_view.name')}
       />
       <Button
         htmlType='button'
@@ -50,7 +52,7 @@ const CreateBrand = () => {
         type='primary'
         style={{ textTransform: 'uppercase', fontWeight: 'bold' }}
       >
-        Create Brand
+        {t('products_view.btn_add')}
       </Button>
     </Flex>
   );
