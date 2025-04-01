@@ -3,6 +3,8 @@
   "language_changed": "El idioma se ha actualizado correctamente",
   "search": "Buscar...",
   "close": "Cerrar",
+  "cancel": "Cancelar",
+  "accept": "Aceptar",
   "login": {
     "title": "Iniciar sesión",
     "email": "Correo electrónico",
@@ -77,6 +79,36 @@
     "create_seller": "Agregar nuevo vendedor",
     "create_category": "Agregar nueva categoría",
     "create_brand": "Agregar nueva marca"
+  },
+  "product_management_view": {
+    "price_range": "Rango de precio",
+    "search_name": "Buscar por nombre del producto",
+    "search_brand": "Buscar por marca del producto",
+    "search_category": "Buscar por categoria del producto",
+    "name": "Nombre del producto",
+    "brand": "Marca",
+    "category": "Categoría",
+    "price": "Precio",
+    "stock": "Cantidad",
+    "purchase": "Comprado por",
+    "sell": "Vender producto",
+    "buyer_name": "Nombre del comprador",
+    "date": "Fecha",
+    "quantity": "Cantidad",
+    "action": "Acciones"
+  },
+  "management_sells_view": {
+    "name": "Nombre del producto",
+    "price": "Precio unitario",
+    "buyer_name": "Comprador",
+    "quantity": "Cantidad",
+    "total_price": "Precio total",
+    "date": "Fecha de compra",
+    "action": "Acción",
+    "delete_modal": {
+      "title": "Eliminar producto",
+      "delete_product": "¿Estás seguro que deseas eliminar este producto?"
+    }
   },
   "all_user": {
     "add_user": "Agregar usuario",

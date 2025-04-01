@@ -3,6 +3,8 @@
   "language_changed": "The language has been updated successfully",
   "search": "Search...",
   "close": "Close",
+  "cancel": "Cancel",
+  "accept": "Accept",
   "login": {
     "title": "Login",
     "email": "E-mail",
@@ -61,7 +63,7 @@
     "contact": "Contact N°",
     "name": "Name",
     "price": "Price",
-    "stock": "Stocl",
+    "stock": "Stock",
     "seller": "Seller",
     "category": "Category",
     "brand": "Brand",
@@ -77,6 +79,36 @@
     "create_seller": "Add new seller",
     "create_category": "Add new category",
     "create_brand": "Add new brand"
+  },
+  "product_management_view": {
+    "price_range": "Price Range",
+    "search_name": "Search by product name",
+    "search_brand": "Search by product brand",
+    "search_category": "Search by product category",
+    "name": "Product name",
+    "brand": "Brand",
+    "category": "Category",
+    "price": "Price",
+    "stock": "Stock",
+    "purchase": "Purchase from",
+    "sell": "Sell product",
+    "buyer_name": "Buyer name",
+    "date": "Date",
+    "quantity": "Quantity",
+    "action": "Action"
+  },
+  "management_sells_view": {
+    "name": "Product name",
+    "price": "Price",
+    "buyer_name": "Buyer name",
+    "quantity": "Quantity",
+    "total_price": "Total price",
+    "date": "Selling date",
+    "action": "Action",
+    "delete_modal": {
+      "title": "Delete product",
+      "delete_product": "Are you want to delete this product?"
+    }
   },
   "all_user": {
     "add_user": "Add user",
