@@ -4,8 +4,10 @@ import Loader from '../components/Loader';
 import { useCountProductsQuery } from '../redux/features/management/productApi';
 import { useYearlySaleQuery } from '../redux/features/management/saleApi';
 import DailyChart from '../components/Charts/DailyChart';
+import { useTranslation } from 'react-i18next';
 
 const Dashboard = () => {
+  const { t } = useTranslation();
   const { data: products, isLoading } = useCountProductsQuery(undefined);
   const { data: yearlyData, isLoading: isLoading1 } = useYearlySaleQuery(undefined);
 
@@ -16,13 +18,13 @@ const Dashboard = () => {
         <Row style={{ paddingRight: '1rem' }}>
           <Col xs={{ span: 24 }} lg={{ span: 8 }} style={{ padding: '.5rem' }}>
             <div className='number-card'>
-              <h3>Total Stock</h3>
+              <h3>{t('dashboard.total_stock')}</h3>
               <h1>{products?.data?.totalQuantity || 0}</h1>
             </div>
           </Col>
           <Col xs={{ span: 24 }} lg={{ span: 8 }} style={{ padding: '.5rem' }}>
             <div className='number-card'>
-              <h3>Total Item Sell </h3>
+              <h3>{t('dashboard.total_item_sell')}</h3>
               <h1>
                 {yearlyData?.data.reduce(
                   (acc: number, cur: { totalQuantity: number }) => (acc += cur.totalQuantity),
@@ -33,7 +35,7 @@ const Dashboard = () => {
           </Col>
           <Col xs={{ span: 24 }} lg={{ span: 8 }} style={{ padding: '.5rem' }}>
             <div className='number-card'>
-              <h3>Total Revenue</h3>
+              <h3>{t('dashboard.total_revenue')}</h3>
               <h1>
                 $
                 {yearlyData?.data.reduce(
@@ -52,7 +54,7 @@ const Dashboard = () => {
             borderRadius: '10px',
           }}
         >
-          <h1 style={{ textAlign: 'center', marginBottom: '.5rem' }}>Daily Sale and Revenue</h1>
+          <h1 style={{ textAlign: 'center', marginBottom: '.5rem' }}>{t('dashboard.daily')}</h1>
           <DailyChart />
         </div>
         <div
@@ -63,7 +65,7 @@ const Dashboard = () => {
             borderRadius: '10px',
           }}
         >
-          <h1 style={{ textAlign: 'center', marginBottom: '.5rem' }}>Monthly Revenue</h1>
+          <h1 style={{ textAlign: 'center', marginBottom: '.5rem' }}>{t('dashboard.monthly')}</h1>
           <MonthlyChart />
         </div>
       </>
