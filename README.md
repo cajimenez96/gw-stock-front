@@ -1,42 +1,28 @@
-# Live Site: https://mhs-inventory.netlify.app
+## Frontend:
+https://grow-stock-system.netlify.app/ - Staging
 
-## Backend Server: https://inventory-420.vercel.app
+https://develop--grow-stock-system.netlify.app/ - Develop
 
-# Features
+## Backend Server:
+https://gw-stock-api-staging.onrender.com - Staging
 
-1. Authentication - Register new account and login into existing account
-2. Create Product - Create new product with various information
-3. Manage product -
-   - View All Product of login user
-   - filter and search using different fields
-   - pagination
-   - update existing product
-   - delete existing product
-   - create new variant of product
-   - sell that product
-4. Manage sale -
-   - View all sale with pagination
-   - update sale data
-   - delete sale data
-5. Sale history - View sales history categorized by:
-   - Yearly
-   - Monthly
-   - Weekly
-   - Daily
+https://gw-stock-api.onrender.com - Develop
 
-## Instruction to run the application local
 
-- Step 1: create a `.env` file at root of the directory and include the environment variables as following bellow
+
+## Instrucción local
+
+- 1: Crear archivo `.env` en la raíz del proyecto y agregar la siguiente variable
 
   ```bash
-      VITE_BASE_URL=http://localhost:5000/api/v1
+      VITE_BASE_URL=http://localhost:8080/api/v1
   ```
 
-- Step 2: install all the dependencies using the command
+- 2: Instalar dependencias
   ```bash
     npm install
   ```
-- Step 3: run the development server using the command
+- Step 3: Iniciar el proyecto
 
   ```bash
     npm run dev
