@@ -1,8 +1,10 @@
-# Frontend: https://grow-stock-system.netlify.app/ - Staging
-# Frontend: https://develop--grow-stock-system.netlify.app/ - Develop
+## Frontend:
+https://grow-stock-system.netlify.app/ - Staging
+https://develop--grow-stock-system.netlify.app/ - Develop
 
-## Backend Server: [https://inventory-420.vercel.app](https://gw-stock-api-staging.onrender.com) - Staging
-## Backend Server: [https://gw-stock-api.onrender.com](https://gw-stock-api.onrender.com) - Develop
+## Backend Server:
+[https://inventory-420.vercel.app](https://gw-stock-api-staging.onrender.com) - Staging
+[https://gw-stock-api.onrender.com](https://gw-stock-api.onrender.com) - Develop
 
 
 
