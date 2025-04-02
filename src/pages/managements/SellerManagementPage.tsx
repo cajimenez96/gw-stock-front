@@ -35,24 +35,24 @@ const SellerManagementPage = () => {
 
   const columns: TableColumnsType<any> = [
     {
-      title: t('management_seller_view.table.seller_name'),
+      title: t('seller_management_view.table.seller_name'),
       key: 'name',
       dataIndex: 'name',
     },
     {
-      title: t('management_seller_view.table.email'),
+      title: t('seller_management_view.table.email'),
       key: 'email',
       dataIndex: 'email',
       align: 'center',
     },
     {
-      title: t('management_seller_view.table.contact'),
+      title: t('seller_management_view.table.contact'),
       key: 'contactNo',
       dataIndex: 'contactNo',
       align: 'center',
     },
     {
-      title: t('management_seller_view.table.action'),
+      title: t('seller_management_view.table.action'),
       key: 'x',
       align: 'center',
       render: (item) => {
@@ -171,9 +171,9 @@ const DeleteModal = ({ id }: { id: string }) => {
       >
         <DeleteFilled />
       </Button>
-      <Modal title={t('management_seller_view.delete_modal.title')} open={isModalOpen} onCancel={handleCancel} footer={null}>
+      <Modal title={t('seller_management_view.delete_modal.title')} open={isModalOpen} onCancel={handleCancel} footer={null}>
         <div style={{ textAlign: 'center', padding: '2rem' }}>
-          <h3>{t('management_seller_view.delete_modal.delete_product')}</h3>
+          <h3>{t('seller_management_view.delete_modal.delete_product')}</h3>
           <div
             style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '1rem' }}
           >

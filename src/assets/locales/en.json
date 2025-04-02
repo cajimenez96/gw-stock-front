@@ -5,6 +5,7 @@
   "close": "Close",
   "cancel": "Cancel",
   "accept": "Accept",
+  "go_back": "Go back",
   "login": {
     "title": "Login",
     "email": "E-mail",
@@ -97,7 +98,7 @@
     "quantity": "Quantity",
     "action": "Action"
   },
-  "management_sells_view": {
+  "sells_management_view": {
     "table": {
       "name": "Product name",
       "price": "Price",
@@ -112,7 +113,7 @@
       "delete_product": "Are you want to delete this product?"
     }
   },
-  "management_seller_view": {
+  "seller_management_view": {
     "table": {
       "seller_name": "Seller",
       "email": "Email",
@@ -123,6 +124,29 @@
       "title": "Delete product",
       "delete_product": "Are you want to delete this product?"
     }
+  },
+  "purchase_management_view": {
+    "table": {
+      "seller_name": "Seller",
+      "name": "Name",
+      "quantity": "Quantity",
+      "price": "Price",
+      "total_price": "Precio total",
+      "pending": "Due",
+      "date": "Date",
+      "action": "Action"
+    },
+    "delete_modal": {
+      "title": "Delete product",
+      "delete_product": "Are you want to delete this product?"
+    }
+  },
+  "profile_view": {
+    "edit_profile": "Edit profile",
+    "change_password": "Change password",
+    "change_picture": "Change avatar",
+    "update_profile": "Update profile"
+
   },
   "all_user": {
     "add_user": "Add user",

@@ -5,6 +5,7 @@
   "close": "Cerrar",
   "cancel": "Cancelar",
   "accept": "Aceptar",
+  "go_back": "Volver",
   "login": {
     "title": "Iniciar sesión",
     "email": "Correo electrónico",
@@ -50,7 +51,7 @@
     "logout": "Cerrar sesión"
   },
   "dashboard": {
-    "total_stock": "Stock total",
+    "total_stock": "Cantidad total",
     "total_item_sell": "Items vendidos",
     "total_revenue": "Ingreso total",
     "daily": "Ventas e ingresos diarios",
@@ -97,7 +98,7 @@
     "quantity": "Cantidad",
     "action": "Acciones"
   },
-  "management_sells_view": {
+  "sells_management_view": {
     "table": {
       "name": "Nombre del producto",
       "price": "Precio unitario",
@@ -112,7 +113,7 @@
       "delete_product": "¿Estás seguro que deseas eliminar este producto?"
     }
   },
-  "management_seller_view": {
+  "seller_management_view": {
     "table": {
       "seller_name": "Vendedor",
       "email": "Email",
@@ -123,6 +124,28 @@
       "title": "Eliminar producto",
       "delete_product": "¿Estás seguro que deseas eliminar este producto?"
     }
+  },
+  "purchase_management_view": {
+    "table": {
+      "seller_name": "Vendedor",
+      "name": "Nombre del producto",
+      "price": "Precio unitario",
+      "quantity": "Cantidad",
+      "total_price": "Precio total",
+      "pending": "Pendiente",
+      "date": "Fecha de compra",
+      "action": "Acción"
+    },
+    "delete_modal": {
+      "title": "Eliminar producto",
+      "delete_product": "¿Estás seguro que deseas eliminar este producto?"
+    }
+  },
+  "profile_view": {
+    "edit_profile": "Modificar perfil",
+    "change_password": "Cambiar contraseña",
+    "change_picture": "Cambiar foto de perfil",
+    "update_profile": "Actualizar perfil"
   },
   "all_user": {
     "add_user": "Agregar usuario",
