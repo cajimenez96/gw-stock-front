@@ -5,8 +5,10 @@ import Loader from '../components/Loader';
 import { useGetSelfProfileQuery } from '../redux/features/authApi';
 import { profileKeys } from '../constant/profile';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const ProfilePage = () => {
+  const { t } = useTranslation();
   const { data, isLoading } = useGetSelfProfileQuery(undefined);
 
   if (isLoading) return <Loader />;
@@ -38,13 +40,13 @@ const ProfilePage = () => {
             <Link to='/edit-profile'>
               <Button type='primary'>
                 <EditOutlined />
-                Edit Profile
+                {t('profile_view.edit_profile')}
               </Button>
             </Link>
             <Link to='/change-password'>
               <Button type='primary'>
                 <EditFilled />
-                Change Password
+                {t('profile_view.change_password')}
               </Button>
             </Link>
           </Flex>

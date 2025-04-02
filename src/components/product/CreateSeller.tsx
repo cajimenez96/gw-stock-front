@@ -1,8 +1,10 @@
 import { Button, Flex } from 'antd';
 import CreateSellerModal from '../modal/CreateSellerModal';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const CreateSeller = () => {
+  const { t } = useTranslation(); 
   const [createSellerModalOpen, setCreateSellerModalOpen] = useState(false);
 
   return (
@@ -24,7 +26,7 @@ const CreateSeller = () => {
             textTransform: 'uppercase',
           }}
         >
-          Create New Seller
+          {t('products_view.create_seller')}
         </h3>
 
         <Button
@@ -33,7 +35,7 @@ const CreateSeller = () => {
           style={{ textTransform: 'uppercase', fontWeight: 'bold' }}
           onClick={() => setCreateSellerModalOpen(true)}
         >
-          Create Seller
+          {t('products_view.btn_add')}
         </Button>
       </Flex>
 

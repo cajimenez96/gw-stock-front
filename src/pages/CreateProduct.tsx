@@ -10,8 +10,10 @@ import {ICategory} from '../types/product.types';
 import CreateSeller from '../components/product/CreateSeller';
 import CreateCategory from '../components/product/CreateCategory';
 import CreateBrand from '../components/product/CreateBrand';
+import { useTranslation } from 'react-i18next';
 
 const CreateProduct = () => {
+  const { t } = useTranslation();
   const [createNewProduct] = useCreateNewProductMutation();
   const {data: categories} = useGetAllCategoriesQuery(undefined);
   const {data: sellers} = useGetAllSellerQuery(undefined);
@@ -79,19 +81,19 @@ const CreateProduct = () => {
                 textTransform: 'uppercase',
               }}
             >
-              Add New Product
+              {t('products_view.add_product')}
             </h1>
             <form onSubmit={handleSubmit(onSubmit)}>
               <CustomInput
                 name='name'
                 errors={errors}
-                label='Name'
+                label={t('products_view.name')}
                 register={register}
                 required={true}
               />
               <CustomInput
                 errors={errors}
-                label='Price'
+                label={t('products_view.price')}
                 type='number'
                 name='price'
                 register={register}
@@ -99,7 +101,7 @@ const CreateProduct = () => {
               />
               <CustomInput
                 errors={errors}
-                label='Stock'
+                label={t('products_view.stock')}
                 type='number'
                 name='stock'
                 register={register}
@@ -108,7 +110,7 @@ const CreateProduct = () => {
               <Row>
                 <Col xs={{span: 23}} lg={{span: 6}}>
                   <label htmlFor='Size' className='label'>
-                    Seller
+                    {t('products_view.seller')}
                   </label>
                 </Col>
                 <Col xs={{span: 23}} lg={{span: 18}}>
@@ -116,7 +118,7 @@ const CreateProduct = () => {
                     {...register('seller', {required: true})}
                     className={`input-field ${errors['seller'] ? 'input-field-error' : ''}`}
                   >
-                    <option value=''>Select Seller*</option>
+                    <option value=''>{t('products_view.select_seller')}</option>
                     {sellers?.data.map((item: ICategory) => (
                       <option value={item._id}>{item.name}</option>
                     ))}
@@ -127,7 +129,7 @@ const CreateProduct = () => {
               <Row>
                 <Col xs={{span: 23}} lg={{span: 6}}>
                   <label htmlFor='Size' className='label'>
-                    Category
+                    {t('products_view.category')}
                   </label>
                 </Col>
                 <Col xs={{span: 23}} lg={{span: 18}}>
@@ -135,7 +137,7 @@ const CreateProduct = () => {
                     {...register('category', {required: true})}
                     className={`input-field ${errors['category'] ? 'input-field-error' : ''}`}
                   >
-                    <option value=''>Select Category*</option>
+                    <option value=''>{t('products_view.select_category')}</option>
                     {categories?.data.map((item: ICategory) => (
                       <option value={item._id}>{item.name}</option>
                     ))}
@@ -146,7 +148,7 @@ const CreateProduct = () => {
               <Row>
                 <Col xs={{span: 23}} lg={{span: 6}}>
                   <label htmlFor='Size' className='label'>
-                    Brand
+                    {t('products_view.brand')}
                   </label>
                 </Col>
                 <Col xs={{span: 23}} lg={{span: 18}}>
@@ -154,7 +156,7 @@ const CreateProduct = () => {
                     {...register('brand')}
                     className={`input-field ${errors['brand'] ? 'input-field-error' : ''}`}
                   >
-                    <option value=''>Select brand</option>
+                    <option value=''>{t('products_view.select_brand')}</option>
                     {brands?.data.map((item: ICategory) => (
                       <option value={item._id}>{item.name}</option>
                     ))}
@@ -162,20 +164,20 @@ const CreateProduct = () => {
                 </Col>
               </Row>
 
-              <CustomInput label='Description' name='description' register={register} />
+              <CustomInput label={t('products_view.description')} name='description' register={register} />
 
               <Row>
                 <Col xs={{span: 23}} lg={{span: 6}}>
                   <label htmlFor='Size' className='label'>
-                    Size
+                    {t('products_view.size')}
                   </label>
                 </Col>
                 <Col xs={{span: 23}} lg={{span: 18}}>
                   <select className={`input-field`} {...register('size')}>
-                    <option value=''>Select Product Size</option>
-                    <option value='SMALL'>Small</option>
-                    <option value='MEDIUM'>Medium</option>
-                    <option value='LARGE'>Large</option>
+                    <option value=''>{t('products_view.select_size')}</option>
+                    <option value='SMALL'>{t('products_view.small_size')}</option>
+                    <option value='MEDIUM'>{t('products_view.medium_size')}</option>
+                    <option value='LARGE'>{t('products_view.large_size')}</option>
                   </select>
                 </Col>
               </Row>
@@ -185,7 +187,7 @@ const CreateProduct = () => {
                   type='primary'
                   style={{textTransform: 'uppercase', fontWeight: 'bold'}}
                 >
-                  Add Product
+                  {t('products_view.add_product')}
                 </Button>
               </Flex>
             </form>

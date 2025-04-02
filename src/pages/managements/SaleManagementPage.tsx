@@ -9,8 +9,10 @@ import { useDeleteSaleMutation, useGetAllSaleQuery } from '../../redux/features/
 import { IProduct } from '../../types/product.types';
 import { ITableSale } from '../../types/sale.type';
 import formatDate from '../../utils/formatDate';
+import { useTranslation } from 'react-i18next';
 
 const SaleManagementPage = () => {
+  const { t } = useTranslation();
   const [query, setQuery] = useState({
     page: 1,
     limit: 10,
@@ -35,42 +37,42 @@ const SaleManagementPage = () => {
 
   const columns: TableColumnsType<any> = [
     {
-      title: 'Product Name',
+      title: t('sells_management_view.table.name'),
       key: 'productName',
       dataIndex: 'productName',
     },
     {
-      title: 'Product Price',
+      title: t('sells_management_view.table.price'),
       key: 'productPrice',
       dataIndex: 'productPrice',
       align: 'center',
     },
     {
-      title: 'Buyer Name',
+      title: t('sells_management_view.table.buyer_name'),
       key: 'buyerName',
       dataIndex: 'buyerName',
       align: 'center',
     },
     {
-      title: 'Quantity',
+      title: t('sells_management_view.table.quantity'),
       key: 'quantity',
       dataIndex: 'quantity',
       align: 'center',
     },
     {
-      title: 'Total Price',
+      title: t('sells_management_view.table.total_price'),
       key: 'totalPrice',
       dataIndex: 'totalPrice',
       align: 'center',
     },
     {
-      title: 'Selling Date',
+      title: t('sells_management_view.table.date'),
       key: 'date',
       dataIndex: 'date',
       align: 'center',
     },
     {
-      title: 'Action',
+      title: t('sells_management_view.table.action'),
       key: 'x',
       align: 'center',
       render: (item) => {
@@ -97,7 +99,7 @@ const SaleManagementPage = () => {
           placeholder='Search by Selling date...'
           style={{ minWidth: '250px' }}
         /> */}
-        <SearchInput setQuery={setQuery} placeholder='Search Sold Products...' />
+        <SearchInput setQuery={setQuery} placeholder={t('search')} />
       </Flex>
       <Table
         size='small'
@@ -164,6 +166,7 @@ const UpdateModal = ({ product }: { product: IProduct }) => {
  * Delete Modal
  */
 const DeleteModal = ({ id }: { id: string }) => {
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteSale] = useDeleteSaleMutation();
 
@@ -198,10 +201,9 @@ const DeleteModal = ({ id }: { id: string }) => {
       >
         <DeleteFilled />
       </Button>
-      <Modal title='Delete Product' open={isModalOpen} onCancel={handleCancel} footer={null}>
+      <Modal title={t('delete_modal.title')} open={isModalOpen} onCancel={handleCancel} footer={null}>
         <div style={{ textAlign: 'center', padding: '2rem' }}>
-          <h2>Are you want to delete this product?</h2>
-          <h4>You won't be able to revert it.</h4>
+          <h3>{t('management_sells_views.delete_modal.delete_product')}</h3>
           <div
             style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '1rem' }}
           >
@@ -210,14 +212,14 @@ const DeleteModal = ({ id }: { id: string }) => {
               type='primary'
               style={{ backgroundColor: 'lightseagreen' }}
             >
-              Cancel
+              {t('cancel')}
             </Button>
             <Button
               onClick={() => handleDelete(id)}
               type='primary'
               style={{ backgroundColor: 'red' }}
             >
-              Yes! Delete
+              {t('accept')}
             </Button>
           </div>
         </div>

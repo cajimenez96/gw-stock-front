@@ -3,6 +3,7 @@ import { FieldValues, useForm } from 'react-hook-form';
 import CustomInput from '../CustomInput';
 import { useCreateSellerMutation } from '../../redux/features/management/sellerApi';
 import toastMessage from '../../lib/toastMessage';
+import { useTranslation } from 'react-i18next';
 
 interface CreateSellerModalProps {
   openModal: boolean;
@@ -10,6 +11,7 @@ interface CreateSellerModalProps {
 }
 
 const CreateSellerModal = ({ openModal, setOpenModal }: CreateSellerModalProps) => {
+  const { t } = useTranslation();
   const [createSeller] = useCreateSellerMutation();
   const {
     handleSubmit,
@@ -34,14 +36,14 @@ const CreateSellerModal = ({ openModal, setOpenModal }: CreateSellerModalProps) 
   return (
     <>
       <Modal
-        title='Create New Seller!'
+        title={t('products_view.create_seller')}
         centered
         open={openModal}
         onOk={() => setOpenModal(false)}
         onCancel={() => setOpenModal(false)}
         footer={[
           <Button key='back' onClick={() => setOpenModal(false)}>
-            Close
+            {t('close')}
           </Button>,
         ]}
       >
@@ -50,26 +52,26 @@ const CreateSellerModal = ({ openModal, setOpenModal }: CreateSellerModalProps) 
             name='name'
             errors={errors}
             register={register}
-            label='Seller Name'
+            label={t('products_view.name')}
             required={true}
           />
           <CustomInput
             name='email'
             errors={errors}
             register={register}
-            label='Seller Email'
+            label={t('products_view.email')}
             required={true}
           />
           <CustomInput
             name='contactNo'
             errors={errors}
             register={register}
-            label='Contact No.'
+            label={t('products_view.contact')}
             required={true}
           />
           <Flex justify='center' style={{ margin: '1rem' }}>
             <Button key='submit' type='primary' htmlType='submit'>
-              Create Seller
+              {t('products_view.create_seller')}
             </Button>
           </Flex>
         </form>

@@ -1,7 +1,11 @@
 {
-  "translate": "Idioma",
+  "translate": "Traducir",
   "language_changed": "El idioma se ha actualizado correctamente",
-  "search": "Buscar...",  
+  "search": "Buscar...",
+  "close": "Cerrar",
+  "cancel": "Cancelar",
+  "accept": "Aceptar",
+  "go_back": "Volver",
   "login": {
     "title": "Iniciar sesión",
     "email": "Correo electrónico",
@@ -17,7 +21,8 @@
     "password_validation2": "La contraseña debe contener al menos 6 caracteres",
     "name_validation1": "Debe ingresar su nombre completo",
     "name_validation2": "Su nombre no debe contener símbolos especiales",
-    "repeat_password_validation1": "Las contraseñas deben ser iguales"
+    "repeat_password_validation1": "Las contraseñas deben ser iguales",
+    "successfully": "Bienvenido!"
   },
   "register": {
     "title": "Registrate",
@@ -46,11 +51,101 @@
     "logout": "Cerrar sesión"
   },
   "dashboard": {
-    "total_stock": "Stock total",
+    "total_stock": "Cantidad total",
     "total_item_sell": "Items vendidos",
     "total_revenue": "Ingreso total",
     "daily": "Ventas e ingresos diarios",
     "monthly": "Ingresos mensuales"
+  },
+  "products_view": {
+    "btn_add": "Añadir",
+    "add_product": "Agregar productos",
+    "email": "Email",
+    "contact": "N° Contacto",
+    "name": "Nombre",
+    "price": "Precio",
+    "stock": "Cantidad",
+    "seller": "Vendedor",
+    "category": "Categoría",
+    "brand": "Marca",
+    "description": "Descripción",
+    "size": "Tamaño",
+    "select_seller": "Seleccione un vendedor",
+    "select_category": "Seleccione una categoría",
+    "select_brand": "Selecione su marca",
+    "select_size": "Selecione el tamaño del producto",
+    "small_size": "Pequeño",
+    "medium_size": "Mediano",
+    "large_size": "Grande",
+    "create_seller": "Agregar nuevo vendedor",
+    "create_category": "Agregar nueva categoría",
+    "create_brand": "Agregar nueva marca"
+  },
+  "product_management_view": {
+    "price_range": "Rango de precio",
+    "search_name": "Buscar por nombre del producto",
+    "search_brand": "Buscar por marca del producto",
+    "search_category": "Buscar por categoria del producto",
+    "name": "Nombre del producto",
+    "brand": "Marca",
+    "category": "Categoría",
+    "price": "Precio",
+    "stock": "Cantidad",
+    "purchase": "Comprado por",
+    "sell": "Vender producto",
+    "buyer_name": "Nombre del comprador",
+    "date": "Fecha",
+    "quantity": "Cantidad",
+    "action": "Acciones"
+  },
+  "sells_management_view": {
+    "table": {
+      "name": "Nombre del producto",
+      "price": "Precio unitario",
+      "buyer_name": "Comprador",
+      "quantity": "Cantidad",
+      "total_price": "Precio total",
+      "date": "Fecha de compra",
+      "action": "Acción"
+    },
+    "delete_modal": {
+      "title": "Eliminar producto",
+      "delete_product": "¿Estás seguro que deseas eliminar este producto?"
+    }
+  },
+  "seller_management_view": {
+    "table": {
+      "seller_name": "Vendedor",
+      "email": "Email",
+      "contact": "Teléfono",
+      "action": "Acción"
+    },
+    "delete_modal": {
+      "title": "Eliminar producto",
+      "delete_product": "¿Estás seguro que deseas eliminar este producto?"
+    }
+  },
+  "purchase_management_view": {
+    "table": {
+      "seller_name": "Vendedor",
+      "name": "Nombre del producto",
+      "price": "Precio unitario",
+      "quantity": "Cantidad",
+      "total_price": "Precio total",
+      "pending": "Pendiente",
+      "date": "Fecha de compra",
+      "action": "Acción"
+    },
+    "delete_modal": {
+      "title": "Eliminar producto",
+      "delete_product": "¿Estás seguro que deseas eliminar este producto?"
+    }
+  },
+  "profile_view": {
+    "edit_profile": "Modificar perfil",
+    "change_password": "Cambiar contraseña",
+    "change_picture": "Cambiar foto de perfil",
+    "update_profile": "Actualizar perfil"
   },
   "all_user": {
     "add_user": "Agregar usuario",
@@ -67,7 +162,5 @@
     "phone": "Teléfono",
     "city": "Ciudad",
     "country": "País"
-  },
-  "products": {
   }
 }
