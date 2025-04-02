@@ -4,14 +4,16 @@ import ReactCountryFlag from 'react-country-flag';
 import { FloatButton, message } from 'antd';
 import { i18n } from '../lib/i18n';
 
-type LanguageProps = 'es' | 'us';
+interface LanguageProps {
+  lng: 'es' | 'us'
+}
 
-const Language = () => {
+const Language = ({ lng }: LanguageProps) => {
   const { t } = useTranslation();
-  const [language, setLanguage] = useState<LanguageProps>('us');
+  const [language, setLanguage] = useState(lng);
 
-  const handleMenuClick: (lang: LanguageProps) => void = (lang) => {
-    i18n.changeLanguage(lang);
+  const handleMenuClick: (lang: 'es' | 'us') => void = (lang) => {
+    i18n.changeLanguage(lang === 'us' ? 'en' : lang);
     setLanguage(lang);
     message.success(t('language_changed'));
   };

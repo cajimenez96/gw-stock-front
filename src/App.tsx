@@ -2,8 +2,12 @@ import { RouterProvider } from 'react-router-dom';
 import { router } from './routes/routes';
 import { ConfigProvider } from 'antd';
 import Language from './components/Language';
+import { getCurrentLanguage } from './redux/services/authSlice';
+import { useAppSelector } from './redux/hooks';
 
 const App = () => {
+  const lng = useAppSelector(getCurrentLanguage);
+
   return (
     <>
       <ConfigProvider
@@ -18,8 +22,8 @@ const App = () => {
         }}
       >
         <RouterProvider router={router} />
-        <Language />
       </ConfigProvider>
+      <Language lng={lng} />
     </>
   );
 };

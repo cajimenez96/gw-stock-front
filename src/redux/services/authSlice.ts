@@ -2,6 +2,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
 export type TUserRole = 'OWNER' | 'ADMIN' | 'SELLER';
+export type TLanguage = 'us' | 'es';
 
 export type TUser = {
   _id: string;
@@ -14,11 +15,13 @@ export type TUser = {
 interface InitialState {
   user: null | TUser;
   token: null | string;
+  language: TLanguage;
 }
 
 const initialState: InitialState = {
   user: null,
-  token: null
+  token: null,
+  language: 'es'
 };
 
 const authSlice = createSlice({
@@ -42,3 +45,4 @@ export default authSlice.reducer;
 
 export const getCurrentUser = (state: RootState) => state.auth.user
 export const getCurrentToken = (state: RootState) => state.auth.token
+export const getCurrentLanguage = (state: RootState) => state.auth.language
