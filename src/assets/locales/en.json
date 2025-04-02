@@ -98,13 +98,27 @@
     "action": "Action"
   },
   "management_sells_view": {
-    "name": "Product name",
-    "price": "Price",
-    "buyer_name": "Buyer name",
-    "quantity": "Quantity",
-    "total_price": "Total price",
-    "date": "Selling date",
-    "action": "Action",
+    "table": {
+      "name": "Product name",
+      "price": "Price",
+      "buyer_name": "Buyer name",
+      "quantity": "Quantity",
+      "total_price": "Total price",
+      "date": "Selling date",
+      "action": "Action"
+    },
+    "delete_modal": {
+      "title": "Delete product",
+      "delete_product": "Are you want to delete this product?"
+    }
+  },
+  "management_seller_view": {
+    "table": {
+      "seller_name": "Seller",
+      "email": "Email",
+      "contact": "Phone",
+      "action": "Action"
+    },
     "delete_modal": {
       "title": "Delete product",
       "delete_product": "Are you want to delete this product?"

@@ -98,13 +98,27 @@
     "action": "Acciones"
   },
   "management_sells_view": {
-    "name": "Nombre del producto",
-    "price": "Precio unitario",
-    "buyer_name": "Comprador",
-    "quantity": "Cantidad",
-    "total_price": "Precio total",
-    "date": "Fecha de compra",
-    "action": "Acción",
+    "table": {
+      "name": "Nombre del producto",
+      "price": "Precio unitario",
+      "buyer_name": "Comprador",
+      "quantity": "Cantidad",
+      "total_price": "Precio total",
+      "date": "Fecha de compra",
+      "action": "Acción"
+    },
+    "delete_modal": {
+      "title": "Eliminar producto",
+      "delete_product": "¿Estás seguro que deseas eliminar este producto?"
+    }
+  },
+  "management_seller_view": {
+    "table": {
+      "seller_name": "Vendedor",
+      "email": "Email",
+      "contact": "Teléfono",
+      "action": "Acción"
+    },
     "delete_modal": {
       "title": "Eliminar producto",
       "delete_product": "¿Estás seguro que deseas eliminar este producto?"

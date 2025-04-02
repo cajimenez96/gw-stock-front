@@ -37,42 +37,42 @@ const SaleManagementPage = () => {
 
   const columns: TableColumnsType<any> = [
     {
-      title: t('management_sells_view.name'),
+      title: t('management_sells_view.table.name'),
       key: 'productName',
       dataIndex: 'productName',
     },
     {
-      title: t('management_sells_view.price'),
+      title: t('management_sells_view.table.price'),
       key: 'productPrice',
       dataIndex: 'productPrice',
       align: 'center',
     },
     {
-      title: t('management_sells_view.buyer_name'),
+      title: t('management_sells_view.table.buyer_name'),
       key: 'buyerName',
       dataIndex: 'buyerName',
       align: 'center',
     },
     {
-      title: t('management_sells_view.quantity'),
+      title: t('management_sells_view.table.quantity'),
       key: 'quantity',
       dataIndex: 'quantity',
       align: 'center',
     },
     {
-      title: t('management_sells_view.total_price'),
+      title: t('management_sells_view.table.total_price'),
       key: 'totalPrice',
       dataIndex: 'totalPrice',
       align: 'center',
     },
     {
-      title: t('management_sells_view.date'),
+      title: t('management_sells_view.table.date'),
       key: 'date',
       dataIndex: 'date',
       align: 'center',
     },
     {
-      title: t('management_sells_view.action'),
+      title: t('management_sells_view.table.action'),
       key: 'x',
       align: 'center',
       render: (item) => {
