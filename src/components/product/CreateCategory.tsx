@@ -2,8 +2,10 @@ import { Button, Flex } from 'antd';
 import { useState } from 'react';
 import { useCreateCategoryMutation } from '../../redux/features/management/categoryApi';
 import toastMessage from '../../lib/toastMessage';
+import { useTranslation } from 'react-i18next';
 
 const CreateCategory = () => {
+  const { t } = useTranslation();
   const [createCategory] = useCreateCategoryMutation();
   const [category, setCategory] = useState('');
 
@@ -37,14 +39,14 @@ const CreateCategory = () => {
           textTransform: 'uppercase',
         }}
       >
-        Create New Category
+        {t('products_view.create_category')}
       </h3>
       <input
         type='text'
         value={category}
         onChange={(e) => setCategory(e.target.value)}
         className='input-field'
-        placeholder='Category Name'
+        placeholder={t('products_view.name')}
       />
       <Button
         htmlType='button'
@@ -52,7 +54,7 @@ const CreateCategory = () => {
         type='primary'
         style={{ textTransform: 'uppercase', fontWeight: 'bold' }}
       >
-        Create Category
+        {t('products_view.btn_add')}
       </Button>
     </Flex>
   );

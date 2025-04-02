@@ -2,6 +2,10 @@
   "translate": "Language",
   "language_changed": "The language has been updated successfully",
   "search": "Search...",
+  "close": "Close",
+  "cancel": "Cancel",
+  "accept": "Accept",
+  "go_back": "Go back",
   "login": {
     "title": "Login",
     "email": "E-mail",
@@ -17,7 +21,8 @@
     "password_validation2": "Password must contain at least 6 characters",
     "name_validation1": "You must enter your full name",
     "name_validation2": "Your name should not contain special symbols",
-    "repeat_password_validation1": "Passwords must be equal"
+    "repeat_password_validation1": "Passwords must be equal",
+    "successfully": "Welcome!"
   },
   "register": {
     "title": "Get started",
@@ -52,6 +57,96 @@
     "daily": "Daily Sale and Revenue",
     "monthly": "Monthly Revenue"
   },
+  "products_view": {
+    "btn_add": "Add",
+    "add_product": "Add new product",
+    "email": "Email",
+    "contact": "Contact N°",
+    "name": "Name",
+    "price": "Price",
+    "stock": "Stock",
+    "seller": "Seller",
+    "category": "Category",
+    "brand": "Brand",
+    "description": "Description",
+    "size": "Size",
+    "select_seller": "Select seller",
+    "select_category": "Select category",
+    "select_brand": "Select brand",
+    "select_size": "Select product size",
+    "small_size": "Small",
+    "medium_size": "Medium",
+    "large_size": "Large",
+    "create_seller": "Add new seller",
+    "create_category": "Add new category",
+    "create_brand": "Add new brand"
+  },
+  "product_management_view": {
+    "price_range": "Price Range",
+    "search_name": "Search by product name",
+    "search_brand": "Search by product brand",
+    "search_category": "Search by product category",
+    "name": "Product name",
+    "brand": "Brand",
+    "category": "Category",
+    "price": "Price",
+    "stock": "Stock",
+    "purchase": "Purchase from",
+    "sell": "Sell product",
+    "buyer_name": "Buyer name",
+    "date": "Date",
+    "quantity": "Quantity",
+    "action": "Action"
+  },
+  "sells_management_view": {
+    "table": {
+      "name": "Product name",
+      "price": "Price",
+      "buyer_name": "Buyer name",
+      "quantity": "Quantity",
+      "total_price": "Total price",
+      "date": "Selling date",
+      "action": "Action"
+    },
+    "delete_modal": {
+      "title": "Delete product",
+      "delete_product": "Are you want to delete this product?"
+    }
+  },
+  "seller_management_view": {
+    "table": {
+      "seller_name": "Seller",
+      "email": "Email",
+      "contact": "Phone",
+      "action": "Action"
+    },
+    "delete_modal": {
+      "title": "Delete product",
+      "delete_product": "Are you want to delete this product?"
+    }
+  },
+  "purchase_management_view": {
+    "table": {
+      "seller_name": "Seller",
+      "name": "Name",
+      "quantity": "Quantity",
+      "price": "Price",
+      "total_price": "Precio total",
+      "pending": "Due",
+      "date": "Date",
+      "action": "Action"
+    },
+    "delete_modal": {
+      "title": "Delete product",
+      "delete_product": "Are you want to delete this product?"
+    }
+  },
+  "profile_view": {
+    "edit_profile": "Edit profile",
+    "change_password": "Change password",
+    "change_picture": "Change avatar",
+    "update_profile": "Update profile"
+  },
   "all_user": {
     "add_user": "Add user",
     "users": "All Users"
@@ -67,7 +162,5 @@
     "phone": "Phone",
     "city": "City",
     "country": "Country"
-  },
-  "products": {
   }
 }

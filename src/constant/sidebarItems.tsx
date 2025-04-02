@@ -11,7 +11,6 @@ import {
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-
 export const getSidebarItems = (t: any) => [
   {
     key: 'Dashboard',

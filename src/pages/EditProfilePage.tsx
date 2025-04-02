@@ -9,8 +9,10 @@ import Loader from '../components/Loader';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 import { config } from '../utils/config';
+import { useTranslation } from 'react-i18next';
 
 const EditProfilePage = () => {
+  const { t } = useTranslation();
   const { data, isLoading } = useGetSelfProfileQuery(undefined);
   const [updateProfile] = useUpdateProfileMutation();
   const navigate = useNavigate();
@@ -79,7 +81,7 @@ const EditProfilePage = () => {
               type='file'
               name='avatar'
               id='avatar'
-              placeholder='Change Profile Picture'
+              placeholder={t('profile_view.change_picture')}
               style={{ display: 'none' }}
               onChange={handleFileChange}
             />
@@ -98,7 +100,7 @@ const EditProfilePage = () => {
               }}
             >
               <UploadOutlined />
-              Change Profile Picture
+              {t('profile_view.change_picture')}
             </label>
           </Flex>
         </Flex>
@@ -106,7 +108,7 @@ const EditProfilePage = () => {
       <Col xs={{ span: 24 }} lg={{ span: 16 }}>
         <Flex justify='end' style={{ margin: '1rem 0' }}>
           <Button type='default' onClick={() => navigate('/profile')}>
-            <ArrowLeftOutlined /> Go Back
+            <ArrowLeftOutlined /> {t('go_back')}
           </Button>
         </Flex>
         <EditProfileForm data={data?.data} />
@@ -118,6 +120,7 @@ const EditProfilePage = () => {
 export default EditProfilePage;
 
 const EditProfileForm = ({ data }: { data: any }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [updateProfile] = useUpdateProfileMutation();
   const {
@@ -170,7 +173,7 @@ const EditProfileForm = ({ data }: { data: any }) => {
           type='primary'
           style={{ textTransform: 'uppercase', fontWeight: 'bold' }}
         >
-          Update Profile
+          {t('profile_view.update_profile')}
         </Button>
       </Flex>
     </form>
