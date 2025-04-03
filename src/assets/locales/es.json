@@ -149,7 +149,18 @@
   },
   "all_user": {
     "add_user": "Agregar usuario",
-    "users": "Todos los usuarios"
+    "add_new_user": "Agregar nuevo usuario",
+    "users": "Todos los usuarios",
+    "table": {
+      "name": "Nombre completo",
+      "email": "Email",
+      "password": "Contraseña",
+      "phone": "Teléfono",
+      "address": "Dirección",
+      "city": "Ciudad",
+      "role": "Rol",
+      "status": "Estado"
+    }
   },
   "table_users": {
     "name": "Nombre completo",

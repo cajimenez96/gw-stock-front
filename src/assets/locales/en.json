@@ -149,7 +149,18 @@
   },
   "all_user": {
     "add_user": "Add user",
-    "users": "All Users"
+    "add_new_user": "Add new user",
+    "users": "All Users",
+    "table": {
+      "name": "Full name",
+      "email": "Email",
+      "password": "Password",
+      "phone": "Phone",
+      "address": "Address",
+      "city": "City",
+      "role": "Rol",
+      "status": "Status"
+    }
   },
   "table_users": {
     "name": "Full name",
