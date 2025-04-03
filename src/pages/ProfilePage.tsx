@@ -16,7 +16,7 @@ const ProfilePage = () => {
   return (
     <>
       <Flex vertical style={{ minHeight: 'calc(100vh - 10rem)' }}>
-        <Flex justify='center' style={{ width: '100%' }}>
+        <Flex justify='center' className='w-full'>
           <Flex
             justify='center'
             style={{
@@ -78,7 +78,7 @@ export default ProfilePage;
 
 const ProfileInfoItems = ({ keyName, value }: { keyName: string; value: string }) => {
   return (
-    <Flex style={{ width: '100%' }} gap={24}>
+    <Flex className='w-full' gap={24}>
       <h2 style={{ flex: 1, fontWeight: '700', textTransform: 'capitalize' }}>{keyName}</h2>
       <h3 style={{ flex: 4, fontWeight: '500' }}>{value}</h3>
     </Flex>

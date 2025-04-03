@@ -26,7 +26,7 @@ const ProductManagementFilter = ({query, setQuery}: ProductManagementFilterProps
       //   boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.4) inset',
       // }}
     >
-      <Row gutter={2} style={{width: '100%'}}>
+      <Row gutter={2} className='w-full'>
         {/* <Col xs={{span: 24}} md={{span: 8}}>
           <label style={{fontWeight: 700}}>Price Range</label>
           <Slider

@@ -194,3 +194,7 @@ li.ant-menu-item {
   background: linear-gradient(348deg, #dce6f2 0%, #ecf0f6 100%);
   padding: 2rem;
 }
+
+.w-full {
+  width: 100% !important;
+}

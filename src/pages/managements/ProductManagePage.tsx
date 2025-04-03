@@ -128,7 +128,7 @@ const ProductManagePage = () => {
   return (
     <Flex vertical gap={20}>
       <Container style={{ padding: 20 }}>
-        <Row gutter={[16, { xs: 8, sm: 16, md: 24, lg: 32 }]} style={{width: '100%'}} align={'middle'}>
+        <Row gutter={[16, { xs: 8, sm: 16, md: 24, lg: 32 }]} className='w-full' align={'middle'}>
           <Col xs={{span: 24}} md={{span: 8}}>
             <CustomSearch
               id={'product'}
