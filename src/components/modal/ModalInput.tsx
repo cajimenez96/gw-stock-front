@@ -1,33 +1,64 @@
-import { Col, Row } from 'antd';
+import { Form, Input, Select } from 'antd';
+import {
+  Control,
+  Controller,
+  ControllerRenderProps,
+  FieldErrors,
+  FieldValues,
+  RegisterOptions
+} from 'react-hook-form';
 
 interface Props {
   name: string;
   label: string;
-  type?: string;
-  handleChange: any;
-  defaultValue?: any;
+  type?: "text" | "password" | "select";
+  options?: any[];
+  placeholder?: string;
+  errors: FieldErrors<FieldValues>;
+  control?: Control<any>;
+  rule?: Omit<RegisterOptions<FieldValues, any>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled" | "password">
 }
 
-const ModalInput = ({ name, label, handleChange, defaultValue = '', type = 'text' }: Props) => {
+const ModalInput = ({
+  name,
+  label,
+  type = 'text',
+  placeholder,
+  options,
+  errors,
+  control,
+  rule
+}: Props) => {
+
+  const renderInput = (field: ControllerRenderProps<any, string>, type: "text" | "password" | "select") => {
+    return type === 'select' ? (
+      <Select {...field} value={field.value.key}>
+      {options?.map((option, index) => (
+        <Select.Option value={option.value} key={index}>
+          {option.name}
+        </Select.Option>
+      ))}
+    </Select>
+    ) : type === 'password' ? (
+      <Input.Password {...field} placeholder={placeholder} />
+    ) : (
+      <Input {...field} placeholder={placeholder} />
+    )
+  }
+
   return (
-    <Row>
-      <Col span={6}>
-        <label htmlFor={name} className='label'>
-          {label}
-        </label>
-      </Col>
-      <Col span={18}>
-        <input
-          id={name}
-          type={type}
-          name={name}
-          value={defaultValue}
-          placeholder={label}
-          onChange={handleChange}
-          className={`input-field`}
-        />
-      </Col>
-    </Row>
+    <Form.Item
+      label={label}
+      validateStatus={errors[name]?.message ? 'error' : ''}
+      help={typeof errors[name]?.message === 'string' ? errors[name].message : ''}
+    >
+      <Controller
+        name={name}
+        control={control}
+        rules={rule}
+        render={({ field }) => renderInput(field, type)}
+      />
+    </Form.Item>
   );
 };
 

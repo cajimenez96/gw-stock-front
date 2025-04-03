@@ -1,4 +1,4 @@
-import { Col, Flex, Modal, Row, Table, Typography } from "antd";
+import { Flex, Table, Typography } from "antd";
 import Container from "../components/Container/Container";
 import { ChangeEvent, useState } from "react";
 import CustomSearch from "../components/CustomSearch";
@@ -6,8 +6,8 @@ import { useTranslation } from "react-i18next";
 import CustomButton from "../components/Button/CustomButton";
 import { UserAddOutlined } from '@ant-design/icons';
 import { useGetAllUsersQuery } from "../redux/features/authApi";
-import Loader from "../components/Loader";
 import { allUsersColumns } from "../constant/constants";
+import CreateUserModal from "../components/modal/CreateUserModal";
 
 const { Title } = Typography;
 
@@ -17,14 +17,12 @@ const AllUsersPage = () => {
   const [searchUser ,setSearchUser] = useState<string>('');
   const [openModal, setOpenModal] = useState<boolean>(false);
 
-  const showModal = () => setOpenModal(!openModal);
+  const showModal = () =>setOpenModal(!openModal);
 
   const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value)
   }
-
   console.log(searchUser);
-
   return (
     <Flex vertical gap={20}>
       <Container justify="space-between" style={{ padding: 20 }}>
@@ -47,19 +45,12 @@ const AllUsersPage = () => {
           scroll={{ x: 100, y: 500 }}
           style={{ tableLayout: 'auto' }}
           dataSource={data?.data}
-          columns={allUsersColumns}
+          columns={allUsersColumns(t)}
           loading={isLoading}
         />
       </Container>
 
-      <Modal
-        centered
-        open={openModal}
-        onOk={showModal}
-        onCancel={showModal}
-      >
-        <div>Agregar usuario</div>
-      </Modal>
+      <CreateUserModal open={openModal} close={showModal} />
     </Flex>
   )
 }

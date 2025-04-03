@@ -10,7 +10,6 @@ interface CustomModalProps {
   closable?: boolean;
   handleOk?: ((e: React.MouseEvent<HTMLButtonElement>) => void);
   handleCancel?: ((e: React.MouseEvent<HTMLButtonElement>) => void);
-  handleClose: () => void;
 }
 
 const CustomModal = ({
@@ -22,7 +21,6 @@ const CustomModal = ({
   closable = false,
   handleOk,
   handleCancel,
-  handleClose
 }: CustomModalProps) => {
   return (
     <Modal
@@ -30,7 +28,7 @@ const CustomModal = ({
     centered={center}
     open={show}
     closable={closable}
-    onClose={handleClose}
+    // onClose={handleClose}
     onOk={handleOk}
     onCancel={handleCancel}
     footer={footer ? footer : null}
