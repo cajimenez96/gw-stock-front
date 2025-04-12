@@ -4,11 +4,11 @@ import ReactCountryFlag from 'react-country-flag';
 import { FloatButton, message } from 'antd';
 import { i18n } from '../lib/i18n';
 
-type LanguageProps = 'es' | 'us';
+type LanguageProps = 'es' | 'en';
 
 const Language = () => {
   const { t } = useTranslation();
-  const [language, setLanguage] = useState<LanguageProps>('us');
+  const [language, setLanguage] = useState<LanguageProps>('es');
 
   const handleMenuClick: (lang: LanguageProps) => void = (lang) => {
     i18n.changeLanguage(lang);
@@ -19,9 +19,9 @@ const Language = () => {
   return (
     <FloatButton.Group
       trigger='hover'
-      icon={<ReactCountryFlag countryCode={language} svg />}
+      icon={<ReactCountryFlag countryCode={language === 'en' ? 'us' : language} svg />}
     >
-      <FloatButton icon={<ReactCountryFlag countryCode={'us'} svg />} onClick={() => handleMenuClick('us')} />
+      <FloatButton icon={<ReactCountryFlag countryCode={'us'} svg />} onClick={() => handleMenuClick('en')} />
       <FloatButton icon={<ReactCountryFlag countryCode={'es'} svg />} onClick={() => handleMenuClick('es')} />
     </FloatButton.Group>
   )

@@ -26,7 +26,7 @@ const CreateSeller = () => {
             textTransform: 'uppercase',
           }}
         >
-          {t('products_view.create_seller')}
+          {t('products_view.create_provider')}
         </h3>
 
         <Button

@@ -36,7 +36,7 @@ const CreateSellerModal = ({ openModal, setOpenModal }: CreateSellerModalProps) 
   return (
     <>
       <Modal
-        title={t('products_view.create_seller')}
+        title={t('products_view.create_provider')}
         centered
         open={openModal}
         onOk={() => setOpenModal(false)}
@@ -71,7 +71,7 @@ const CreateSellerModal = ({ openModal, setOpenModal }: CreateSellerModalProps) 
           />
           <Flex justify='center' style={{ margin: '1rem' }}>
             <Button key='submit' type='primary' htmlType='submit'>
-              {t('products_view.create_seller')}
+              {t('products_view.create_provider')}
             </Button>
           </Flex>
         </form>

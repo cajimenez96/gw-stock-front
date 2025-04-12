@@ -10,23 +10,23 @@ import { i18n, I18nextProvider } from './lib/i18n.ts';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <I18nextProvider i18n={i18n}>
-          <App />
-          <Toaster
-            duration={2000}
-            toastOptions={{
-              style: {
-                background: 'rgba(22, 72, 99, 0.7)',
-                color: '#fff',
-                fontWeight: 900,
-                padding: '1rem',
-              },
-            }}
-          />
-        </I18nextProvider>
-      </PersistGate>
-    </Provider>
+    <I18nextProvider i18n={i18n}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+            <App />
+            <Toaster
+              duration={2000}
+              toastOptions={{
+                style: {
+                  background: 'rgba(22, 72, 99, 0.7)',
+                  color: '#fff',
+                  fontWeight: 900,
+                  padding: '1rem',
+                },
+              }}
+            />
+        </PersistGate>
+      </Provider>
+    </I18nextProvider>
   </React.StrictMode>
 );

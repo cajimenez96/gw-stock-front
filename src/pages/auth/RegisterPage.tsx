@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Button, Flex } from 'antd';
 import { FieldValues, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
@@ -9,6 +10,7 @@ import decodeToken from '../../utils/decodeToken';
 import { toast } from 'sonner';
 
 const RegisterPage = () => {
+  const {t} = useTranslation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [userRegistration] = useRegisterMutation();
@@ -50,30 +52,30 @@ const RegisterPage = () => {
         }}
       >
         <h1 style={{ marginBottom: '.7rem', textAlign: 'center', textTransform: 'uppercase' }}>
-          Register
+          {t('register.title')}
         </h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             type='text'
             {...register('name', { required: true })}
-            placeholder='Your Name*'
+            placeholder={t('register.full_name')}
             className={`input-field ${errors['name'] ? 'input-field-error' : ''}`}
           />
           <input
             type='text'
             {...register('email', { required: true })}
-            placeholder='Your Email*'
+            placeholder={t('register.email')}
             className={`input-field ${errors['email'] ? 'input-field-error' : ''}`}
           />
           <input
             type='password'
-            placeholder='Your Password*'
+            placeholder={t('register.password')}
             {...register('password', { required: true })}
             className={`input-field ${errors['password'] ? 'input-field-error' : ''}`}
           />
           <input
             type='password'
-            placeholder='Confirm Password*'
+            placeholder={t('register.repeat_password')}
             {...register('confirmPassword', { required: true })}
             className={`input-field ${errors['confirmPassword'] ? 'input-field-error' : ''}`}
           />
@@ -83,13 +85,10 @@ const RegisterPage = () => {
               type='primary'
               style={{ textTransform: 'uppercase', fontWeight: 'bold' }}
             >
-              Register
+              {t('register.submit')}
             </Button>
           </Flex>
         </form>
-        <p style={{ marginTop: '1rem' }}>
-          Already have an account? <Link to='/login'>Login Here</Link>
-        </p>
       </Flex>
     </Flex>
   );

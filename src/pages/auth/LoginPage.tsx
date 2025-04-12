@@ -77,9 +77,6 @@ const LoginPage = () => {
             </Button>
           </Flex>
         </form>
-        <p style={{ marginTop: '1rem' }}>
-        {t('login.register')} <Link to='/register'>{t('login.register_link')}</Link>
-        </p>
       </Flex>
     </Flex>
   );

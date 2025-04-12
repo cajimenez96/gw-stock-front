@@ -166,21 +166,6 @@ const CreateProduct = () => {
 
               <CustomInput label={t('products_view.description')} name='description' register={register} />
 
-              <Row>
-                <Col xs={{span: 23}} lg={{span: 6}}>
-                  <label htmlFor='Size' className='label'>
-                    {t('products_view.size')}
-                  </label>
-                </Col>
-                <Col xs={{span: 23}} lg={{span: 18}}>
-                  <select className={`input-field`} {...register('size')}>
-                    <option value=''>{t('products_view.select_size')}</option>
-                    <option value='SMALL'>{t('products_view.small_size')}</option>
-                    <option value='MEDIUM'>{t('products_view.medium_size')}</option>
-                    <option value='LARGE'>{t('products_view.large_size')}</option>
-                  </select>
-                </Col>
-              </Row>
               <Flex justify='center'>
                 <Button
                   htmlType='submit'
