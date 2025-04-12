@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Button, Flex } from 'antd';
 import { FieldValues, useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import toastMessage from '../../lib/toastMessage';
 import { useRegisterMutation } from '../../redux/features/authApi';
 import { useAppDispatch } from '../../redux/hooks';
