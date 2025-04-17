@@ -33,10 +33,11 @@ const Sidebar = () => {
             setShowLogoutBtn(!collapsed);
           }
         }}
-        width='220px'
+        width='15%'
         style={{
           backgroundColor: '#164863',
           position: 'relative',
+          paddingRight: 10,
         }}
       >
         <div className='demo-logo-vertical'>
