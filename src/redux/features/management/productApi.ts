@@ -33,6 +33,18 @@ const productApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ['product']
     }),
+    createMassiveProducts: builder.mutation({
+      query: (file) => {
+        const formData = new FormData();
+        formData.append('file', file);
+        return {
+          url: '/products/massive',
+          method: 'POST',
+          body: formData,
+        };
+      },
+      invalidatesTags: ['product']
+    }),
     addStock: builder.mutation({
       query: ({ id, payload }) => ({
         url: `/products/${id}/add`,
@@ -71,6 +83,7 @@ export const {
   useGetAllProductsQuery,
   useCountProductsQuery,
   useCreateNewProductMutation,
+  useCreateMassiveProductsMutation,
   useAddStockMutation,
   useDeleteProductMutation,
   useGetSingleProductQuery,
