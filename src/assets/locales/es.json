@@ -79,7 +79,9 @@
     "large_size": "Grande",
     "create_provider": "Agregar nuevo proveedor",
     "create_category": "Agregar nueva categoría",
-    "create_brand": "Agregar nueva marca"
+    "create_brand": "Agregar nueva marca",
+    "create_massive": "Importar productos por excel",
+    "invalid_file_type": "Tipo de archivo inválido"
   },
   "product_management_view": {
     "price_range": "Rango de precio",

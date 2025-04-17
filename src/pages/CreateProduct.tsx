@@ -11,6 +11,7 @@ import CreateSeller from '../components/product/CreateSeller';
 import CreateCategory from '../components/product/CreateCategory';
 import CreateBrand from '../components/product/CreateBrand';
 import { useTranslation } from 'react-i18next';
+import CreateMassiveProducts from '../components/product/CreateMassiveProducts';
 
 const CreateProduct = () => {
   const { t } = useTranslation();
@@ -193,6 +194,7 @@ const CreateProduct = () => {
             <CreateSeller />
             <CreateCategory />
             <CreateBrand />
+            <CreateMassiveProducts />
           </Flex>
         </Col>
       </Row>
